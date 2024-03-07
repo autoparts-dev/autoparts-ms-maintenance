@@ -87,7 +87,7 @@ jobs:
           do
             $DOCKER run -d --net=$NET --add-host eureka-server:$SERVICE_DISCOVERY_ADDR --restart unless-stopped -p 0:8080 -v ${{ vars.logs_dir }}/\$i\:/logs $IMAGE_FILE
           done
-          sleep 40
+          sleep 2
           cat cid | xargs -r $DOCKER stop
           $DOCKER container prune -f
           $DOCKER image prune -f

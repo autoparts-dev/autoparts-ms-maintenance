@@ -15,7 +15,7 @@ import com.autoparts.ms.maintenance.vo.user.UserProfileListVO;
 import com.autoparts.ms.maintenance.vo.user.UserProfileUpdateVO;
 
 @RestController 
-@RequestMapping("/ap/userprofile/v1")
+@RequestMapping("/ap/maintenance/user/v1")
 public class UserProfileController extends FrontController{
 	
 	@Autowired

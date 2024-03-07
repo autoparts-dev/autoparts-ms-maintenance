@@ -28,7 +28,7 @@ import com.autoparts.ms.maintenance.vo.company.CompanyUpdateVO;
  * 
  */
 @RestController 
-@RequestMapping("/ap/companyprofile/v1")
+@RequestMapping("/ap/maintenance/company/v1")
 public class CompanyProfileController extends FrontController{
 	
 	private static Logger log = LoggerFactory.getLogger(CompanyProfileController.class.getName());

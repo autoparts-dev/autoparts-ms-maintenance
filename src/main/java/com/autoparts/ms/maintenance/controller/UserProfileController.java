@@ -25,6 +25,11 @@ public class UserProfileController extends FrontController{
 		// TODO Auto-generated constructor stub
 	}
 	
+	@GetMapping("/ping")
+	public int ping() {
+		return 200;
+	}
+	
 	@PostMapping(path = "/updateUser", produces = "application/json")
 	public ResponseEntity updateUser(@RequestBody UserProfileUpdateVO vo) throws Exception {
 		

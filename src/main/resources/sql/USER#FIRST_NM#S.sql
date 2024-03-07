@@ -1,0 +1,8 @@
+SELECT CEIL(COUNT(u.ID) OVER() / :pageSize) AS TOTAL_PAGE,
+u.ID, u.USER_ID, u.FIRST_NAME, u.MOBILE_NUM, u.EMAIL, u.COMPANY_ID, u.STATUS
+FROM T_USER u
+WHERE u.ID = :id 
+AND u.COMPANY_ID = :companyId
+AND u.IS_DEL = 'N'
+ORDER BY u.FIRST_NAME
+LIMIT :startRow, :pageSize

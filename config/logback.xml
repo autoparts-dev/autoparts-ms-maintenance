@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+
+	<appender name = "stdout" class = "ch.qos.logback.core.ConsoleAppender">
+    	<encoder>
+        	<pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.SSS'Z'}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
+      	</encoder>
+   	</appender>
+   
+   	<appender name = "springboot" class = "ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>./logs/springboot.log</File>
+      
+      	<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/springboot-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>50MB</maxFileSize>
+            
+		</rollingPolicy>
+		
+      	<encoder>
+        	<pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.SSS'Z'}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
+      	</encoder>
+   	</appender>
+   	
+   	<logger name="org.springframework.web.filter.CommonsRequestLoggingFilter">
+    	<level value="DEBUG" />
+	</logger>
+   
+   	<root level = "info">
+		<appender-ref ref = "springboot"/>
+      	<appender-ref ref = "stdout"/> 
+   	</root>
+<!-- end of springboot log -->
+
+<!-- core logging -->
+	<appender name="core" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/core.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/core-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>100MB</maxFileSize>
+		</rollingPolicy>
+
+        <encoder>
+            <pattern>%d %p %c [%M] %m%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.autoparts.core" level="debug" additivity="false">
+        <appender-ref ref="core"/>
+    </logger>
+        
+<!-- entity-profiler -->
+    <appender name="entity-profiler" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/entity-profiler.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/entity-profiler-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>100MB</maxFileSize>
+            
+		</rollingPolicy>
+
+        <encoder>
+            <pattern>%d %p %c %m%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="entity-profiler" level="debug" additivity="false">
+        <appender-ref ref="entity-profiler"/>
+    </logger>
+
+<!-- batch-profiler -->
+	<appender name="batch-profiler" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/batch-profiler.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/batch-profiler-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>100MB</maxFileSize>
+            
+		</rollingPolicy>
+
+        <encoder>
+            <pattern>%d %p %c [%M] %m%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="batch-profiler" level="debug" additivity="false">
+        <appender-ref ref="batch-profiler"/>
+    </logger>    
+
+	<appender name="common" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/common.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/common-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>100MB</maxFileSize>
+		</rollingPolicy>
+
+        <encoder>
+            <pattern>%d %p %c [%M] %m%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.autoparts.common" level="debug" additivity="false">
+        <appender-ref ref="common"/>
+    </logger>
+    
+
+	<appender name="auth" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/auth.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/auth-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>100MB</maxFileSize>
+		</rollingPolicy>
+
+        <encoder>
+            <pattern>%d %p %c [%M] %m%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.autoparts.jwt" level="debug" additivity="false">
+        <appender-ref ref="auth"/>
+    </logger>
+
+
+<!-- Application log start here -->
+
+    <appender name="maintenance" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/maintenance.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/maintenance-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>100MB</maxFileSize>
+            
+		</rollingPolicy>
+
+        <encoder>
+            <pattern>%d %p %c [%M] %m%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.autoparts.ms.maintenance" level="debug" additivity="false">
+        <appender-ref ref="maintenance"/>
+    </logger>
+
+</configuration>

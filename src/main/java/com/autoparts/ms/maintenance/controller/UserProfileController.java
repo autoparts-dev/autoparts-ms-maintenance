@@ -30,9 +30,13 @@ public class UserProfileController extends FrontController{
 		return 200;
 	}
 	
+	@GetMapping(path = "/findUserById/{id}", produces = "application/json")
+	public ResponseEntity findUserById(@PathVariable(name = "id") String id) throws Exception {
+		return ok(userProfileService.findUserById(id));
+	}
+	
 	@PostMapping(path = "/updateUser", produces = "application/json")
 	public ResponseEntity updateUser(@RequestBody UserProfileUpdateVO vo) throws Exception {
-		
 		userProfileService.updateUser(vo);
 		
 		return ok();
@@ -43,15 +47,10 @@ public class UserProfileController extends FrontController{
 		return ok(userProfileService.findAllUser(vo.getCompanyId(), vo.getPage()));
 	}
 	
-	@PostMapping(path = "/findUserByFirstname", produces = "application/json")
-	public ResponseEntity findUserByFirstname(@RequestBody UserProfileListVO vo) throws Exception {
-		return ok(userProfileService.findUserByFirstname(vo.getFirstName(), vo.getCompanyId(), vo.getPage()));
-	}
-	
-	@GetMapping(path = "/findUserById/{id}", produces = "application/json")
-	public ResponseEntity findUserById(@PathVariable(name = "id") String id) throws Exception {
-		return ok(userProfileService.findUserById(id));
-	}
+//	@PostMapping(path = "/findUserByFirstname", produces = "application/json")
+//	public ResponseEntity findUserByFirstname(@RequestBody UserProfileListVO vo) throws Exception {
+//		return ok(userProfileService.findUserByFirstname(vo.getFirstName(), vo.getCompanyId(), vo.getPage()));
+//	}
 	
 	@PostMapping(path = "/deleteUser/{id}", produces = "application/json")
 	public ResponseEntity deleteUser(@PathVariable(name = "id") String id) throws Exception {

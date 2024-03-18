@@ -88,9 +88,7 @@ public class CompanyProfileEntity extends BaseEntity{
 		vo.setPagination(page, pageSize);
 
 		return executeQuery("COMPANY#NAME#S", vo);
-//		
 	}
-	
 	
 	@Transactional
 	public int create(CompanyCreateVO vo) throws EntityException {

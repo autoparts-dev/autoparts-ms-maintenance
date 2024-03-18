@@ -51,7 +51,7 @@ public class CompanyProfileController extends FrontController{
 	
 	@GetMapping(path = "/findCompanyById/{id}", produces = "application/json")
 	public ResponseEntity findCompanyById(@PathVariable(name = "id") String id) throws Exception {
-		log.debug("trigger findCompanyById=" + id);
+		log.debug("call findCompanyById=" + id);
 		
 		return ok(
 				companyProfileService.findCompanyById(id));
@@ -59,7 +59,7 @@ public class CompanyProfileController extends FrontController{
 	
 	@PostMapping(path = "/findCompanyByName", produces = "application/json")
 	public ResponseEntity findCompanyByName(@RequestBody CompanyListVO vo) throws Exception {
-		log.debug("trigger findCompanyByName=" + vo.getName() + ", " + vo.getPage());
+		log.debug("call findCompanyByName=" + vo.getName() + ", " + vo.getPage());
 		
 		return ok(
 				companyProfileService.findCompanyByName(
@@ -69,7 +69,7 @@ public class CompanyProfileController extends FrontController{
 	
 	@PostMapping(path = "/createCompany", produces = "application/json")
 	public ResponseEntity createCompany(@RequestBody CompanyCreateVO vo) throws Exception {
-		log.debug("trigger createCompany. " + vo.getName());
+		log.debug("call createCompany. " + vo.getName());
 		
 		String id = companyProfileService.createCompany(vo);
 		return ok(
@@ -79,6 +79,8 @@ public class CompanyProfileController extends FrontController{
 	
 	@PostMapping(path = "/updateCompany", produces = "application/json")
 	public ResponseEntity updateCompany(@RequestBody CompanyUpdateVO vo) throws Exception {
+		log.debug("call updateCompany=" + vo.getId());
+		
 		companyProfileService.updateCompany(vo);
 		
 		return ok();
@@ -86,6 +88,7 @@ public class CompanyProfileController extends FrontController{
 	
 	@PostMapping(path = "/deleteCompany/{id}")
 	public ResponseEntity deleteCompany(@PathVariable(name = "id") String id) throws Exception{
+
 		companyProfileService.deleteCompany(id);
 		
 		return ok();	

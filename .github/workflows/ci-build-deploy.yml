@@ -85,7 +85,7 @@ jobs:
           $DOCKER pull $IMAGE_FILE
           for i in {1..$REPLICA}
           do
-            $DOCKER run -d --net=$NET --add-host eureka-server:$SERVICE_DISCOVERY_ADDR --restart unless-stopped -p 0:8080 -v ${{ vars.logs_dir }}/\$i\:/logs $IMAGE_FILE
+            $DOCKER run -d --net=$NET --add-host eureka-server:$SERVICE_DISCOVERY_ADDR --restart unless-stopped -p 0:8080 -v ${{ vars.work_dir }}/logs/${{ github.repository }}/\$i\:/logs $IMAGE_FILE
           done
           sleep 2
           cat cid | xargs -r $DOCKER stop

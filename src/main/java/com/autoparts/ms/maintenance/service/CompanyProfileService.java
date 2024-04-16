@@ -7,12 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.autoparts.common.ApplicationParameter;
 import com.autoparts.common.constants.Common;
 import com.autoparts.common.constants.Reason;
 import com.autoparts.common.constants.UserStatus;
-import com.autoparts.core.ApplicationParameter;
 import com.autoparts.core.exception.ApplicationException;
 import com.autoparts.core.utils.StringUtils;
 import com.autoparts.ms.maintenance.repository.CompanyProfileEntity;
@@ -28,6 +27,9 @@ public class CompanyProfileService {
 	
 	@Autowired
 	private CompanyProfileEntity companyProfileEntity;
+	
+	@Autowired
+	private ApplicationParameter applicationParameter;
 	
 	
 	public CompanyProfileService() {
@@ -45,14 +47,12 @@ public class CompanyProfileService {
 		else {
 			return vo;
 		}
-		
-		
 	}
 	
 	
 	public List<CompanyListVO> findCompanyByName(String name, int page) throws Exception {
 		
-		List<CompanyListVO> lst = companyProfileEntity.findCompanyByName(name, (page == 0 ? 1 : page), ApplicationParameter.pageSize);
+		List<CompanyListVO> lst = companyProfileEntity.findCompanyByName(name, (page == 0 ? 1 : page), applicationParameter.pageSize);
 		
 		if(lst == null || lst.size() == 0) {
 			throw new ApplicationException(Reason.COMPANY_NOT_FOUND.name());
@@ -63,7 +63,6 @@ public class CompanyProfileService {
 		
 	}
 	
-	@Transactional
 	public String createCompany(CompanyCreateVO vo) throws Exception {
 		String id = null;
 		String brn = vo.getBusinessRegisrationNumber();
@@ -85,7 +84,6 @@ public class CompanyProfileService {
 		return id;
 	}
 	
-	@Transactional
 	public void updateCompany(CompanyUpdateVO vo) throws Exception {
 		
 		if(companyProfileEntity.findCompanyById(vo.getId()) == null) {
@@ -104,7 +102,6 @@ public class CompanyProfileService {
 	 * @param id
 	 * @throws Exception
 	 */
-	@Transactional
 	public void removeCompany(String id) throws Exception{
 		CompanyUpdateVO vo = new CompanyUpdateVO();
 		vo.setId(id);
@@ -124,7 +121,6 @@ public class CompanyProfileService {
 	 * @param id
 	 * @throws Exception
 	 */
-	@Transactional
 	public void deleteCompany(String id) throws Exception {
 		companyProfileEntity.delete(id);
 	}

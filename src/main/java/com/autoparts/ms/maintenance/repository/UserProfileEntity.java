@@ -50,17 +50,6 @@ public class UserProfileEntity extends BaseEntity{
 		return executeQuery("USER#ALL#S", vo);
 	}
 	
-	@Transactional(propagation = Propagation.NOT_SUPPORTED)
-	public List<UserProfileListVO> findUserByFirstname(String firstName, String companyId, int page, int pageSize) throws EntityException{
-		UserProfileListVO vo = new UserProfileListVO();
-		vo.setCompanyId(companyId);
-		vo.setFirstName(firstName);
-		vo.setPagination(page, pageSize);
-		
-		return executeQuery("USER#FIRST_NM#S", vo);
-	}
-	
-	
 	@Transactional
 	public int update(UserProfileUpdateVO vo) throws EntityException {
 		return execute("USER#U", vo);

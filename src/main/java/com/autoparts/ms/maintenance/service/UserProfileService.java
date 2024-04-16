@@ -9,10 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.autoparts.common.ApplicationParameter;
 import com.autoparts.common.constants.Common;
 import com.autoparts.common.constants.Reason;
 import com.autoparts.common.constants.UserStatus;
-import com.autoparts.core.ApplicationParameter;
 import com.autoparts.core.exception.ApplicationException;
 import com.autoparts.ms.maintenance.repository.UserProfileEntity;
 import com.autoparts.ms.maintenance.vo.user.UserProfileListVO;
@@ -29,6 +29,8 @@ public class UserProfileService {
 	@Autowired
 	private UserProfileEntity userProfileEntity;
 	
+	@Autowired
+	private ApplicationParameter applicationParameter;
 
 	/**
 	 * 
@@ -39,7 +41,7 @@ public class UserProfileService {
 	
 	public List<UserProfileListVO> findAllUser(String companyId, int page) throws Exception{
 		
-		List<UserProfileListVO> lst = userProfileEntity.findAllUser(companyId, page, ApplicationParameter.pageSize);
+		List<UserProfileListVO> lst = userProfileEntity.findAllUser(companyId, page, applicationParameter.pageSize);
 		
 		if(lst == null || lst.size() == 0) {
 			throw new ApplicationException(Reason.USER_NOT_FOUND.name());
@@ -48,19 +50,6 @@ public class UserProfileService {
 			return lst;
 		}
 		
-	}
-	
-
-	public List<UserProfileListVO> findUserByFirstname(String firstName, String companyId, int page) throws Exception{
-		
-		List<UserProfileListVO> lst = userProfileEntity.findUserByFirstname(firstName, companyId, page, ApplicationParameter.pageSize);
-		
-		if(lst == null || lst.size() == 0) {
-			throw new ApplicationException(Reason.USER_NOT_FOUND.name());
-		}
-		else{
-			return lst;
-		}
 	}
 	
 	public UserProfileVO findUserById(String id) throws Exception {

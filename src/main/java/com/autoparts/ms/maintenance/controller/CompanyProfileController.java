@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.autoparts.common.controller.FrontController;
+import com.autoparts.common.web.FrontController;
 import com.autoparts.ms.maintenance.service.CompanyProfileService;
 import com.autoparts.ms.maintenance.vo.company.CompanyCreateVO;
 import com.autoparts.ms.maintenance.vo.company.CompanyListVO;
@@ -53,11 +53,10 @@ public class CompanyProfileController extends FrontController{
 	public ResponseEntity findCompanyById(@PathVariable(name = "id") String id) throws Exception {
 		log.debug("call findCompanyById=" + id);
 		
-		return ok(
-				companyProfileService.findCompanyById(id));
+		return ok(companyProfileService.findCompanyById(id));
 	}
 	
-	@PostMapping(path = "/findCompanyByName", produces = "application/json")
+	@PostMapping(path = "/findCompanyByName", produces = "application/json", consumes = "application/json")
 	public ResponseEntity findCompanyByName(@RequestBody CompanyListVO vo) throws Exception {
 		log.debug("call findCompanyByName=" + vo.getName() + ", " + vo.getPage());
 		
@@ -67,7 +66,7 @@ public class CompanyProfileController extends FrontController{
 		
 	}
 	
-	@PostMapping(path = "/createCompany", produces = "application/json")
+	@PostMapping(path = "/createCompany", produces = "application/json", consumes = "application/json")
 	public ResponseEntity createCompany(@RequestBody CompanyCreateVO vo) throws Exception {
 		log.debug("call createCompany. " + vo.getName());
 		
@@ -77,7 +76,7 @@ public class CompanyProfileController extends FrontController{
 		);
 	}
 	
-	@PostMapping(path = "/updateCompany", produces = "application/json")
+	@PostMapping(path = "/updateCompany", produces = "application/json", consumes = "application/json")
 	public ResponseEntity updateCompany(@RequestBody CompanyUpdateVO vo) throws Exception {
 		log.debug("call updateCompany=" + vo.getId());
 		
@@ -86,7 +85,7 @@ public class CompanyProfileController extends FrontController{
 		return ok();
 	}
 	
-	@PostMapping(path = "/deleteCompany/{id}")
+	@PostMapping(path = "/deleteCompany/{id}", produces = "application/json")
 	public ResponseEntity deleteCompany(@PathVariable(name = "id") String id) throws Exception{
 
 		companyProfileService.deleteCompany(id);
@@ -94,7 +93,7 @@ public class CompanyProfileController extends FrontController{
 		return ok();	
 	}
 	
-	@PostMapping(path = "/removeCompany/{id}")
+	@PostMapping(path = "/removeCompany/{id}", produces = "application/json")
 	public ResponseEntity removeCompany(@PathVariable(name = "id") String id) throws Exception{
 		companyProfileService.removeCompany(id);
 		

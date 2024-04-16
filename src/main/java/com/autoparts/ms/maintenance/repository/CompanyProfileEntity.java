@@ -45,14 +45,8 @@ public class CompanyProfileEntity extends BaseEntity{
 		CompanyProfileVO vo = new CompanyProfileVO();
 		vo.setId(id);
 		
-		List<CompanyProfileVO> lst = executeQuery("COMPANY#ID#S", vo);
-		
-		if(lst == null || lst.size() == 0) {
-			return null;
-		}else {
+		return getSingleResult("COMPANY#ID#S", vo);
 
-			return lst.get(0);
-		}
 	}
 
 	

@@ -23,9 +23,6 @@ public class UserProfileVO implements Serializable{
 	@BindVariable
 	private String id;
 	
-	@Column(name = "USER_ID")
-	private String userId;
-	
 	@Column(name = "FIRST_NAME")
 	private String firstName;
 	
@@ -105,11 +102,6 @@ public class UserProfileVO implements Serializable{
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+	
 
 }

@@ -27,9 +27,6 @@ public class UserProfileListVO extends PageObject implements Serializable{
 	@Column(name = "ID")
 	private String id;
 	
-	@Column(name = "USER_ID")
-	private String userId;
-	
 	@BindVariable
 	@Column(name = "FIRST_NAME")
 	private String firstName;
@@ -95,11 +92,6 @@ public class UserProfileListVO extends PageObject implements Serializable{
 		this.status = status;
 	}
 	
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+	
 
 }

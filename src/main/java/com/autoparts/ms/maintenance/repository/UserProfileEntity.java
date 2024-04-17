@@ -29,7 +29,6 @@ public class UserProfileEntity extends BaseEntity{
 	 * 
 	 */
 	public UserProfileEntity(@Qualifier("apdbEM") EntityManager em) {
-		// TODO Auto-generated constructor stub
 		this.setEntityManager(em);
 	}
 	

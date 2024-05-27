@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.autoparts.core.entity.annotation.BindVariable;
-import com.autoparts.core.validator.json.RootDeserializeValidator;
+import com.autoparts.core.validator.json.JsonDeserializeValidator;
 import com.autoparts.core.validator.json.annotation.Mandatory;
 import com.autoparts.core.validator.json.annotation.Regexp;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * @author sosseres
  *
  */
-@JsonDeserialize(using = RootDeserializeValidator.class)
+@JsonDeserialize(using = JsonDeserializeValidator.class)
 public class CompanyUpdateVO implements Serializable {
 
 	@BindVariable

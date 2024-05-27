@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.autoparts.common.ApplicationParameter;
 import com.autoparts.common.constants.Common;
+import com.autoparts.common.constants.UserStatus;
 import com.autoparts.common.web.constants.Reason;
-import com.autoparts.common.web.constants.UserStatus;
 import com.autoparts.core.exception.ApplicationException;
 import com.autoparts.core.utils.StringUtils;
 import com.autoparts.ms.maintenance.repository.CompanyProfileEntity;

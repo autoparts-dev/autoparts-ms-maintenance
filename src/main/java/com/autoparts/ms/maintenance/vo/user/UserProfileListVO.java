@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 import com.autoparts.core.entity.annotation.BindVariable;
 import com.autoparts.core.entity.mysql.PageObject;
-import com.autoparts.core.validator.json.RootDeserializeValidator;
+import com.autoparts.core.validator.json.JsonDeserializeValidator;
 import com.autoparts.core.validator.json.annotation.Mandatory;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * @author sosseres
  *
  */
-@JsonDeserialize(using = RootDeserializeValidator.class)
+@JsonDeserialize(using = JsonDeserializeValidator.class)
 @Entity
 public class UserProfileListVO extends PageObject implements Serializable{
 

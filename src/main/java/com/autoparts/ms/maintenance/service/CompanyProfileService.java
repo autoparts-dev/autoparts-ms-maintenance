@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.autoparts.common.ApplicationParameter;
 import com.autoparts.common.constants.Common;
-import com.autoparts.common.constants.UserStatus;
 import com.autoparts.common.web.constants.Reason;
 import com.autoparts.core.exception.ApplicationException;
 import com.autoparts.core.utils.StringUtils;
@@ -76,7 +75,7 @@ public class CompanyProfileService {
 			vo.setCreated(new Date());
 			vo.setCreatedBy(Common.SYSTEM_USER);
 			vo.setId(id);
-			vo.setStatus(UserStatus.ACTIVE);
+			vo.setStatus("ACTIVE");
 			
 			companyProfileEntity.create(vo);
 		}
@@ -107,7 +106,7 @@ public class CompanyProfileService {
 		vo.setId(id);
 		vo.setUpdated(new Date());
 		vo.setUpdatedBy(Common.SYSTEM_USER);
-		vo.setStatus(UserStatus.DELETED);
+		vo.setStatus("DELETE");
 		vo.setDelete("Y");
 		
 		int r = companyProfileEntity.update(vo);

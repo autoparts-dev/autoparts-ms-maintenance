@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.autoparts.common.web.FrontController;
+import com.autoparts.common.web.ResponseHandler;
 import com.autoparts.ms.maintenance.service.UserProfileService;
 import com.autoparts.ms.maintenance.vo.user.UserProfileListVO;
 import com.autoparts.ms.maintenance.vo.user.UserProfileUpdateVO;
 
 @RestController 
 @RequestMapping("/ap/maintenance/user/v1")
-public class UserProfileController extends FrontController{
+public class UserProfileController{
 	
 	@Autowired
 	private UserProfileService userProfileService;
@@ -32,19 +32,19 @@ public class UserProfileController extends FrontController{
 	
 	@GetMapping(path = "/findUserById/{id}", produces = "application/json")
 	public ResponseEntity findUserById(@PathVariable(name = "id") String id) throws Exception {
-		return ok(userProfileService.findUserById(id));
+		return ResponseHandler.ok(userProfileService.findUserById(id));
 	}
 	
 	@PostMapping(path = "/updateUser", produces = "application/json", consumes = "application/json")
 	public ResponseEntity updateUser(@RequestBody UserProfileUpdateVO vo) throws Exception {
 		userProfileService.updateUser(vo);
 		
-		return ok();
+		return ResponseHandler.ok();
 	}
 
 	@PostMapping(path = "/findAllUser", produces = "application/json", consumes = "application/json")
 	public ResponseEntity findAllUser(@RequestBody UserProfileListVO vo) throws Exception {
-		return ok(userProfileService.findAllUser(vo.getCompanyId(), vo.getPage()));
+		return ResponseHandler.ok(userProfileService.findAllUser(vo.getCompanyId(), vo.getPage()));
 	}
 	
 	
@@ -52,19 +52,19 @@ public class UserProfileController extends FrontController{
 	public ResponseEntity deleteUser(@PathVariable(name = "id") String id) throws Exception {
 		userProfileService.deleteUser(id);
 		
-		return ok();
+		return ResponseHandler.ok();
 	}
 	
 	@PostMapping(path = "/activate/{id}", produces = "application/json")
 	public ResponseEntity activate(@PathVariable(name = "id") String id) throws Exception {
 		userProfileService.activate(id);
-		return ok();
+		return ResponseHandler.ok();
 	}
 	
 	@PostMapping(path = "/deactivate/{id}", produces = "application/json")
 	public ResponseEntity deactivate(@PathVariable(name = "id") String id) throws Exception {
 		userProfileService.deactivate(id);
 		
-		return ok();
+		return ResponseHandler.ok();
 	}
 }

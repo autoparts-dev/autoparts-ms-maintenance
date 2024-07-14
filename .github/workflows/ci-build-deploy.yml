@@ -85,11 +85,12 @@ jobs:
           docker pull $IMAGE_FILE
           for i in {1..$REPLICA}
           do
-            docker run -d --net=$NET --add-host eureka-server:$EUREKA_SERVER --name ${{ github.event.repository.name }}-\$i -p 0:8080 -v ${{ vars.work_dir }}/config/global:/global -v ${{ vars.work_dir }}/logs/${{ github.event.repository.name }}/\$i\:/logs $IMAGE_FILE
+            docker run -d --net=$NET --add-host eureka-server:$EUREKA_SERVER --name ${{ github.event.repository.name }}-\$i-$(uuidgen) -p 0:8080 -v ${{ vars.work_dir }}/config/global:/global -v ${{ vars.work_dir }}/logs/${{ github.event.repository.name }}/\$i\:/logs $IMAGE_FILE
           done
           sleep 1
           cat cid | xargs -r docker stop
-          docker container prune -f
+          cat cid | xargs -r docker container rm
+          cat cid | xargs -r docker image rm
           docker image prune -f
           docker logout
         "

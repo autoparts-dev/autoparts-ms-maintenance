@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.autoparts.common.web.ResponseHandler;
-import com.autoparts.ms.maintenance.service.CompanyProfileService;
+import com.autoparts.ms.maintenance.services.CompanyProfileService;
 import com.autoparts.ms.maintenance.vo.company.CompanyCreateVO;
 import com.autoparts.ms.maintenance.vo.company.CompanyListVO;
 import com.autoparts.ms.maintenance.vo.company.CompanyUpdateVO;

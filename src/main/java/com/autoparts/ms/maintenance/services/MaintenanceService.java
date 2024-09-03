@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.autoparts.ms.maintenance.service;
+package com.autoparts.ms.maintenance.services;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.autoparts.core.entity.EntityException;
 import com.autoparts.ms.maintenance.repository.MaintenanceEntity;
-import com.autoparts.ms.maintenance.vo.srv.ProductCategoryVO;
+import com.autoparts.ms.maintenance.vo.service.ProductCategoryVO;
 
 /**
  * @author sosseres

@@ -1,4 +1,4 @@
-package com.autoparts.ms.maintenance.service;
+package com.autoparts.ms.maintenance.services;
 
 import java.util.Date;
 import java.util.List;

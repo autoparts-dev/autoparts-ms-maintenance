@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.autoparts.common.web.ResponseHandler;
-import com.autoparts.ms.maintenance.service.UserProfileService;
+import com.autoparts.ms.maintenance.services.UserProfileService;
 import com.autoparts.ms.maintenance.vo.user.UserProfileListVO;
 import com.autoparts.ms.maintenance.vo.user.UserProfileUpdateVO;
 

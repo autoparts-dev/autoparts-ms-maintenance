@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.autoparts.common.web.ResponseHandler;
-import com.autoparts.ms.maintenance.service.MaintenanceService;
+import com.autoparts.ms.maintenance.services.MaintenanceService;
 
 /**
  * @author sosseres

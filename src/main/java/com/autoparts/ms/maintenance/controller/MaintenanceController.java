@@ -1,0 +1,42 @@
+/**
+ * 
+ */
+package com.autoparts.ms.maintenance.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.autoparts.common.web.ResponseHandler;
+import com.autoparts.ms.maintenance.service.MaintenanceService;
+
+/**
+ * @author sosseres
+ *
+ */
+@RestController
+@RequestMapping("/ap/maintenance/service/v1")
+public class MaintenanceController {
+
+	@Autowired
+	private MaintenanceService maintenanceService;
+	
+	@Autowired
+	private ResponseHandler responseHandler;
+	
+	/**
+	 * 
+	 */
+	public MaintenanceController() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@GetMapping(path = "/getListOfProductCategory", produces = "application/json")
+	public ResponseEntity getListOfProductCategory() throws Exception{
+		return responseHandler.ok(maintenanceService.getListOfProductCategory());
+		
+	}
+
+}

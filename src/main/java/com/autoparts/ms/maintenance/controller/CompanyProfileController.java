@@ -35,6 +35,9 @@ public class CompanyProfileController {
 	
 	@Autowired
 	private CompanyProfileService companyProfileService;
+	
+	@Autowired
+	private ResponseHandler responseHandler;
 
 	/**
 	 * 
@@ -53,51 +56,50 @@ public class CompanyProfileController {
 	public ResponseEntity findCompanyById(@PathVariable(name = "id") String id) throws Exception {
 		log.debug("call findCompanyById=" + id);
 		
-		return ResponseHandler.ok(companyProfileService.findCompanyById(id));
+		return responseHandler.ok(companyProfileService.findCompanyById(id));
 	}
 	
 	@PostMapping(path = "/findCompanyByName", produces = "application/json", consumes = "application/json")
 	public ResponseEntity findCompanyByName(@RequestBody CompanyListVO vo) throws Exception {
-		log.debug("call findCompanyByName=" + vo.getName() + ", " + vo.getPage());
+		log.debug("call findCompanyByName= {}, {}", vo.getName(), vo.getPage());
 		
-		return ResponseHandler.ok(
+		return responseHandler.ok(
 				companyProfileService.findCompanyByName(
 						vo.getName(), vo.getPage()));
 		
 	}
 	
-	@PostMapping(path = "/createCompany", produces = "application/json", consumes = "application/json")
-	public ResponseEntity createCompany(@RequestBody CompanyCreateVO vo) throws Exception {
-		log.debug("call createCompany. " + vo.getName());
+	@PostMapping(path = "/create", produces = "application/json", consumes = "application/json")
+	public ResponseEntity create(@RequestBody CompanyCreateVO vo) throws Exception {
 		
 		String id = companyProfileService.createCompany(vo);
-		return ResponseHandler.ok(
+		
+		return responseHandler.ok(
 				new HashMap<>() {{put("id", id);}}
 		);
 	}
 	
-	@PostMapping(path = "/updateCompany", produces = "application/json", consumes = "application/json")
-	public ResponseEntity updateCompany(@RequestBody CompanyUpdateVO vo) throws Exception {
-		log.debug("call updateCompany=" + vo.getId());
+	@PostMapping(path = "/update", produces = "application/json", consumes = "application/json")
+	public ResponseEntity update(@RequestBody CompanyUpdateVO vo) throws Exception {
 		
 		companyProfileService.updateCompany(vo);
 		
-		return ResponseHandler.ok();
+		return responseHandler.ok();
 	}
 	
-	@PostMapping(path = "/deleteCompany/{id}", produces = "application/json")
-	public ResponseEntity deleteCompany(@PathVariable(name = "id") String id) throws Exception{
+	@PostMapping(path = "/delete/{id}", produces = "application/json")
+	public ResponseEntity delete(@PathVariable(name = "id") String id) throws Exception{
 
 		companyProfileService.deleteCompany(id);
 		
-		return ResponseHandler.ok();	
+		return responseHandler.ok();	
 	}
 	
-	@PostMapping(path = "/removeCompany/{id}", produces = "application/json")
-	public ResponseEntity removeCompany(@PathVariable(name = "id") String id) throws Exception{
+	@PostMapping(path = "/remove/{id}", produces = "application/json")
+	public ResponseEntity remove(@PathVariable(name = "id") String id) throws Exception{
 		companyProfileService.removeCompany(id);
 		
-		return ResponseHandler.ok();	
+		return responseHandler.ok();	
 	}
 	
 	

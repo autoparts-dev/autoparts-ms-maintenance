@@ -28,7 +28,7 @@ jobs:
       
       DOCKER: ${{ vars.docker }}
       NET: apnet
-      SERVICE_DISCOVERY_ADDR: 172.18.0.200
+      EUREKA_SERVER: 172.18.0.200
       REPLICA: 1
 
       # IMAGE_FILE: ${{ github.repository }}:$(date +%s)
@@ -74,24 +74,25 @@ jobs:
     - name: Deploy
       run: |
         mkdir -p ~/.ssh/
+
+        ssh-keyscan -H ${{ secrets.ssh_host }} > ~/.ssh/known_hosts
         echo "${{ secrets.ssh_private_key }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        echo "${{ secrets.ssh_known_hosts }}" > ~/.ssh/known_hosts
-        ssh -t -t -p ${{ secrets.ssh_port }} ${{ secrets.ssh_user }}@${{ secrets.ssh_host }} "
+        chmod 400 ~/.ssh/id_rsa
+        ssh -t -t -i ~/.ssh/id_rsa -p ${{ secrets.ssh_port }} ${{ secrets.ssh_user }}@${{ secrets.ssh_host }} "
           pwd
-          security unlock-keychain -p ${{ secrets.remote_server_token }}
-          $DOCKER ps -a -q --filter ancestor=$IMAGE_FILE > cid
-          $DOCKER login $LOGIN_OPTION -u $DOCKER_USER -p $DOCKER_TOKEN
-          $DOCKER pull $IMAGE_FILE
+          docker ps -a -q --filter ancestor=$IMAGE_FILE > cid
+          docker login $LOGIN_OPTION -u $DOCKER_USER -p $DOCKER_TOKEN
+          docker pull $IMAGE_FILE
           for i in {1..$REPLICA}
           do
-            $DOCKER run -d --net=$NET --add-host eureka-server:$SERVICE_DISCOVERY_ADDR --restart unless-stopped -p 0:8080 -v ${{ vars.work_dir }}/config/global:/global -v ${{ vars.work_dir }}/logs/${{ github.event.repository.name }}/\$i\:/logs $IMAGE_FILE
+            docker run -d --net=$NET --add-host eureka-server:$EUREKA_SERVER --name ${{ github.event.repository.name }}-\$i-$(uuidgen) -p 0:8080 -v ${{ vars.work_dir }}/config/global:/global -v ${{ vars.work_dir }}/logs/${{ github.event.repository.name }}/\$i\:/logs $IMAGE_FILE
           done
-          sleep 2
-          cat cid | xargs -r $DOCKER stop
-          $DOCKER container prune -f
-          $DOCKER image prune -f
-          $DOCKER logout
+          sleep 1
+          cat cid | xargs -r docker stop
+          cat cid | xargs -r docker container rm
+          cat cid | xargs -r docker image rm
+          docker image prune -f
+          docker logout
         "
         echo "Deployment done"
     #   run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml

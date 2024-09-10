@@ -28,9 +28,10 @@ public class UserProfileController{
 		// TODO Auto-generated constructor stub
 	}
 	
-	@GetMapping("/ping")
-	public int ping() {
-		return 200;
+	@GetMapping(path = "/ping", produces = "application/json")
+	public ResponseEntity ping() throws Exception {
+		return responseHandler.ok();
+		
 	}
 	
 	@GetMapping(path = "/findUserById/{id}", produces = "application/json")

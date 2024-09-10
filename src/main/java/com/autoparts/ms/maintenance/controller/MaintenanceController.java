@@ -33,6 +33,12 @@ public class MaintenanceController {
 		// TODO Auto-generated constructor stub
 	}
 	
+	@GetMapping(path = "/ping", produces = "application/json")
+	public ResponseEntity ping() throws Exception {
+		return responseHandler.ok();
+		
+	}
+	
 	@GetMapping(path = "/getListOfProductCategory", produces = "application/json")
 	public ResponseEntity getListOfProductCategory() throws Exception{
 		return responseHandler.ok(maintenanceService.getListOfProductCategory());

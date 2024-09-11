@@ -1,4 +1,4 @@
-SELECT pc.ID, pc.NAME, pc.CD, pc.IMG
+SELECT pc.ID, pc.NAME, pc.CD, pc.IMG_PATH
 FROM T_MT_PROD_CATGS pc
 AND pc.IS_DEL = 'N'
 ORDER BY pc.NAME, pc.FAV_IDX DESC

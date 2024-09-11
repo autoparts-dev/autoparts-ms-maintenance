@@ -26,7 +26,7 @@ public class ProductCategoryVO implements Serializable{
 	@Column(name = "CD")
 	private String code;
 	
-	@Column(name = "IMG")
+	@Column(name = "IMG_PATH")
 	private String imagePath;
 	
 	

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.autoparts.common.ApplicationParameter;
 import com.autoparts.common.web.ResponseHandler;
 import com.autoparts.ms.maintenance.services.MaintenanceService;
 
@@ -26,6 +27,9 @@ public class MaintenanceController {
 	@Autowired
 	private ResponseHandler responseHandler;
 	
+	@Autowired
+	private ApplicationParameter applicationParameter;
+	
 	/**
 	 * 
 	 */
@@ -41,6 +45,9 @@ public class MaintenanceController {
 	
 	@GetMapping(path = "/getListOfProductCategory", produces = "application/json")
 	public ResponseEntity getListOfProductCategory() throws Exception{
+		
+		System.out.println("->" + applicationParameter.packageToScan);
+		
 		return responseHandler.ok(maintenanceService.getListOfProductCategory());
 		
 	}

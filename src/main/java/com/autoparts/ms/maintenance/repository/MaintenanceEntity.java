@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.autoparts.core.entity.BaseEntity;
 import com.autoparts.core.entity.EntityException;
-import com.autoparts.ms.maintenance.vo.service.ProductCategoryVO;
+import com.autoparts.ms.maintenance.vo.ProductCategoryVO;
 
 /**
  * @author sosseres

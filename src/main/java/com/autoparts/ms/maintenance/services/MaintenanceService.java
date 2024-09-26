@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.autoparts.core.entity.EntityException;
 import com.autoparts.ms.maintenance.repository.MaintenanceEntity;
-import com.autoparts.ms.maintenance.vo.service.ProductCategoryVO;
+import com.autoparts.ms.maintenance.vo.ProductCategoryVO;
 
 /**
  * @author sosseres

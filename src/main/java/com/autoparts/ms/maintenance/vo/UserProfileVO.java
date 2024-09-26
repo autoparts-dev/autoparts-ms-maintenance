@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.autoparts.ms.maintenance.vo.user;
+package com.autoparts.ms.maintenance.vo;
 
 import java.io.Serializable;
 

@@ -1,18 +1,16 @@
 /**
  * 
  */
-package com.autoparts.ms.maintenance.vo.user;
+package com.autoparts.ms.maintenance.vo;
 
 import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.util.Date;
 
 import com.autoparts.core.entity.annotation.BindVariable;
-import com.autoparts.core.entity.mysql.PageObject;
 import com.autoparts.core.validator.json.JsonDeserializeValidator;
 import com.autoparts.core.validator.json.annotation.Mandatory;
+import com.autoparts.core.validator.json.annotation.Regexp;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
@@ -20,36 +18,48 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  *
  */
 @JsonDeserialize(using = JsonDeserializeValidator.class)
-@Entity
-public class UserProfileListVO extends PageObject implements Serializable{
+public class UserProfileUpdateVO implements Serializable{
 
-	@Id
-	@Column(name = "ID")
+	@BindVariable
+	@Mandatory
 	private String id;
 	
 	@BindVariable
-	@Column(name = "FIRST_NAME")
+	@Mandatory
 	private String firstName;
 	
-	@Column(name = "MOBILE_NUM")
+	@BindVariable
+	private String lastName;
+	
+	@BindVariable
+	@Mandatory
+	@Regexp("^\\d{9,11}$")
 	private String mobileNumber;
 	
-	@Column(name = "EMAIL")
+	@BindVariable
+	@Regexp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
 	private String email;
 	
-	@Mandatory
-	@BindVariable
-	@Column(name = "COMPANY_ID")
-	private String companyId;
 	
-	@Column(name = "STATUS")
+	@BindVariable
+	@JsonIgnore
 	private String status;
 	
+	@BindVariable
+	@JsonIgnore
+	private String updatedBy;
 	
+	@BindVariable
+	@JsonIgnore
+	private Date updated;
+	
+	@BindVariable
+	@JsonIgnore
+	private String delete;
 	/**
 	 * 
 	 */
-	public UserProfileListVO() {
+	public UserProfileUpdateVO() {
 		// TODO Auto-generated constructor stub
 	}
 	public String getId() {
@@ -66,7 +76,12 @@ public class UserProfileListVO extends PageObject implements Serializable{
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
@@ -79,12 +94,7 @@ public class UserProfileListVO extends PageObject implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getCompanyId() {
-		return companyId;
-	}
-	public void setCompanyId(String companyId) {
-		this.companyId = companyId;
-	}
+	
 	public String getStatus() {
 		return status;
 	}
@@ -92,6 +102,23 @@ public class UserProfileListVO extends PageObject implements Serializable{
 		this.status = status;
 	}
 	
-	
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+	public Date getUpdated() {
+		return updated;
+	}
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+	public String isDelete() {
+		return delete;
+	}
+	public void setDelete(String delete) {
+		this.delete = delete;
+	}
 
 }

@@ -1,74 +1,72 @@
 /**
  * 
  */
-package com.autoparts.ms.maintenance.vo.company;
+package com.autoparts.ms.maintenance.vo;
 
 import java.io.Serializable;
-import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import com.autoparts.core.entity.annotation.BindVariable;
-import com.autoparts.core.validator.json.JsonDeserializeValidator;
-import com.autoparts.core.validator.json.annotation.Mandatory;
-import com.autoparts.core.validator.json.annotation.Regexp;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * @author sosseres
  *
  */
-@JsonDeserialize(using = JsonDeserializeValidator.class)
-public class CompanyCreateVO implements Serializable {
+@Entity
+public class CompanyProfileVO implements Serializable {
 
+	@Id
+	@Column(name = "ID")
 	@BindVariable
 	private String id;
 	
+	@Column(name = "NAME")
 	@BindVariable
-	@Mandatory
 	private String name;
 	
+	@Column(name = "BRN")
 	@BindVariable(name = "brn")
-	@Mandatory
 	private String businessRegisrationNumber;
 	
-	@BindVariable
-	@JsonIgnore
-	private Date created;
-	
-	@BindVariable
-	@JsonIgnore
+	@Column(name = "STATUS")
 	private String status;
 
-	@BindVariable
-	@JsonIgnore
-	private String createdBy;
-
-	@BindVariable
-	@Regexp("^\\d{9,11}$")
+	@Column(name = "CONTACT_NUM")
 	private String contactNumber;
 	
-	@BindVariable
+	@Column(name = "ADDR_LINE_1")
 	private String addressLine1;
 
-	@BindVariable
+	@Column(name = "ADDR_LINE_2")
 	private String addressLine2;
 
-	@BindVariable
+	@Column(name = "ADDR_LINE_3")
 	private String addressLine3;
 
-	@BindVariable
+	@Column(name = "POSTCODE")
 	private String postcode;
 
-	@BindVariable
+	@Column(name = "MT_STATE_ID")
 	private String stateId;
 
-	@BindVariable
+
+	@Column(name = "MT_CTRY_ID")
 	private String countryId;
+	
+	@Column(name = "STATE")
+	private String state;
+	
+	
+	@Column(name = "COUNTRY")
+	private String country;
 	
 	/**
 	 * 
 	 */
-	public CompanyCreateVO() {
+	public CompanyProfileVO() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -102,25 +100,6 @@ public class CompanyCreateVO implements Serializable {
 		this.businessRegisrationNumber = businessRegisrationNumber;
 	}
 
-
-	public Date getCreated() {
-		return created;
-	}
-
-
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-
-
-	public String getCreatedBy() {
-		return createdBy;
-	}
-
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
 
 
 	public String getStatus() {
@@ -193,6 +172,27 @@ public class CompanyCreateVO implements Serializable {
 	}
 
 
+	public String getState() {
+		return state;
+	}
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+
+	public String getCountry() {
+		return country;
+	}
+
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+
 	public String getContactNumber() {
 		return contactNumber;
 	}
@@ -201,8 +201,5 @@ public class CompanyCreateVO implements Serializable {
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-
-
-
 
 }

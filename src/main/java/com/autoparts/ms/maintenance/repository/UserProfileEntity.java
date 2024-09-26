@@ -14,9 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.autoparts.core.entity.BaseEntity;
 import com.autoparts.core.entity.EntityException;
-import com.autoparts.ms.maintenance.vo.user.UserProfileListVO;
-import com.autoparts.ms.maintenance.vo.user.UserProfileUpdateVO;
-import com.autoparts.ms.maintenance.vo.user.UserProfileVO;
+import com.autoparts.ms.maintenance.vo.UserProfileListVO;
+import com.autoparts.ms.maintenance.vo.UserProfileUpdateVO;
+import com.autoparts.ms.maintenance.vo.UserProfileVO;
 
 /**
  * @author sosseres

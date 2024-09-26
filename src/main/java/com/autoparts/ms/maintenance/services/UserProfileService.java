@@ -15,9 +15,9 @@ import com.autoparts.common.constants.UserStatus;
 import com.autoparts.common.web.constants.Reason;
 import com.autoparts.core.exception.ApplicationException;
 import com.autoparts.ms.maintenance.repository.UserProfileEntity;
-import com.autoparts.ms.maintenance.vo.user.UserProfileListVO;
-import com.autoparts.ms.maintenance.vo.user.UserProfileUpdateVO;
-import com.autoparts.ms.maintenance.vo.user.UserProfileVO;
+import com.autoparts.ms.maintenance.vo.UserProfileListVO;
+import com.autoparts.ms.maintenance.vo.UserProfileUpdateVO;
+import com.autoparts.ms.maintenance.vo.UserProfileVO;
 
 /**
  * @author sosseres

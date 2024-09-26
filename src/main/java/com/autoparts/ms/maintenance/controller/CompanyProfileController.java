@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.autoparts.common.web.ResponseHandler;
 import com.autoparts.ms.maintenance.services.CompanyProfileService;
-import com.autoparts.ms.maintenance.vo.company.CompanyCreateVO;
-import com.autoparts.ms.maintenance.vo.company.CompanyListVO;
-import com.autoparts.ms.maintenance.vo.company.CompanyUpdateVO;
+import com.autoparts.ms.maintenance.vo.CompanyCreateVO;
+import com.autoparts.ms.maintenance.vo.CompanyUpdateVO;
+import com.autoparts.ms.maintenance.vo.FindByCompanyNameVO;
 
 
 /**
@@ -61,7 +61,7 @@ public class CompanyProfileController {
 	}
 	
 	@PostMapping(path = "/findCompanyByName", produces = "application/json", consumes = "application/json")
-	public ResponseEntity findCompanyByName(@RequestBody CompanyListVO vo) throws Exception {
+	public ResponseEntity findCompanyByName(@RequestBody FindByCompanyNameVO vo) throws Exception {
 		log.debug("call findCompanyByName= {}, {}", vo.getName(), vo.getPage());
 		
 		return responseHandler.ok(

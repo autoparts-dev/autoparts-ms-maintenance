@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.autoparts.ms.maintenance.vo.service;
+package com.autoparts.ms.maintenance.vo;
 
 import java.io.Serializable;
 

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.autoparts.common.web.ResponseHandler;
 import com.autoparts.ms.maintenance.services.UserProfileService;
-import com.autoparts.ms.maintenance.vo.user.UserProfileListVO;
-import com.autoparts.ms.maintenance.vo.user.UserProfileUpdateVO;
+import com.autoparts.ms.maintenance.vo.FindByCompanyIdVO;
+import com.autoparts.ms.maintenance.vo.UserProfileUpdateVO;
 
 @RestController 
 @RequestMapping("/ap/maintenance/user/v1")
@@ -47,7 +47,7 @@ public class UserProfileController{
 	}
 
 	@PostMapping(path = "/findAllUser", produces = "application/json", consumes = "application/json")
-	public ResponseEntity findAllUser(@RequestBody UserProfileListVO vo) throws Exception {
+	public ResponseEntity findAllUser(@RequestBody FindByCompanyIdVO vo) throws Exception {
 		return responseHandler.ok(userProfileService.findAllUser(vo.getCompanyId(), vo.getPage()));
 	}
 	

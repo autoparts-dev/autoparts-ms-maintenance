@@ -1,72 +1,80 @@
 /**
  * 
  */
-package com.autoparts.ms.maintenance.vo.company;
+package com.autoparts.ms.maintenance.vo;
 
 import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.util.Date;
 
 import com.autoparts.core.entity.annotation.BindVariable;
+import com.autoparts.core.validator.json.JsonDeserializeValidator;
+import com.autoparts.core.validator.json.annotation.Mandatory;
+import com.autoparts.core.validator.json.annotation.Regexp;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * @author sosseres
  *
  */
-@Entity
-public class CompanyProfileVO implements Serializable {
+@JsonDeserialize(using = JsonDeserializeValidator.class)
+public class CompanyUpdateVO implements Serializable {
 
-	@Id
-	@Column(name = "ID")
 	@BindVariable
+	@Mandatory
 	private String id;
 	
-	@Column(name = "NAME")
 	@BindVariable
+	@Mandatory
 	private String name;
 	
-	@Column(name = "BRN")
 	@BindVariable(name = "brn")
+	@Mandatory
 	private String businessRegisrationNumber;
 	
-	@Column(name = "STATUS")
-	private String status;
-
-	@Column(name = "CONTACT_NUM")
+	@BindVariable
+	@Regexp("^\\d{9,11}$")
 	private String contactNumber;
 	
-	@Column(name = "ADDR_LINE_1")
+	@BindVariable
 	private String addressLine1;
 
-	@Column(name = "ADDR_LINE_2")
+	@BindVariable
 	private String addressLine2;
 
-	@Column(name = "ADDR_LINE_3")
+	@BindVariable
 	private String addressLine3;
 
-	@Column(name = "POSTCODE")
+	@BindVariable
 	private String postcode;
 
-	@Column(name = "MT_STATE_ID")
+	@BindVariable
 	private String stateId;
 
-
-	@Column(name = "MT_CTRY_ID")
+	@BindVariable
 	private String countryId;
 	
-	@Column(name = "STATE")
-	private String state;
+	@JsonIgnore
+	@BindVariable
+	private Date updated;
 	
+	@JsonIgnore
+	@BindVariable
+	private String updatedBy;
 	
-	@Column(name = "COUNTRY")
-	private String country;
+	@BindVariable
+	@JsonIgnore
+	private String status;
 	
+	@BindVariable
+	@JsonIgnore
+	private String delete;
+	
+
 	/**
 	 * 
 	 */
-	public CompanyProfileVO() {
+	public CompanyUpdateVO() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -78,6 +86,26 @@ public class CompanyProfileVO implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+
+	public Date getUpdated() {
+		return updated;
+	}
+
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 
@@ -101,14 +129,13 @@ public class CompanyProfileVO implements Serializable {
 	}
 
 
-
-	public String getStatus() {
-		return status;
+	public String getContactNumber() {
+		return contactNumber;
 	}
 
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
 
@@ -161,7 +188,6 @@ public class CompanyProfileVO implements Serializable {
 		this.stateId = stateId;
 	}
 
-
 	public String getCountryId() {
 		return countryId;
 	}
@@ -172,34 +198,25 @@ public class CompanyProfileVO implements Serializable {
 	}
 
 
-	public String getState() {
-		return state;
+	public String getStatus() {
+		return status;
 	}
 
 
-	public void setState(String state) {
-		this.state = state;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 
-
-	public String getCountry() {
-		return country;
+	public String isDelete() {
+		return delete;
 	}
 
 
-	public void setCountry(String country) {
-		this.country = country;
+	public void setDelete(String delete) {
+		this.delete = delete;
 	}
 
 
-	public String getContactNumber() {
-		return contactNumber;
-	}
-
-
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
 
 }

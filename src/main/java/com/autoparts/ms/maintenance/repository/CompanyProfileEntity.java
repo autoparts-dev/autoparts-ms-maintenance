@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.autoparts.core.entity.BaseEntity;
 import com.autoparts.core.entity.EntityException;
-import com.autoparts.ms.maintenance.vo.company.CompanyCreateVO;
-import com.autoparts.ms.maintenance.vo.company.CompanyListVO;
-import com.autoparts.ms.maintenance.vo.company.CompanyProfileVO;
-import com.autoparts.ms.maintenance.vo.company.CompanyUpdateVO;
+import com.autoparts.ms.maintenance.vo.CompanyCreateVO;
+import com.autoparts.ms.maintenance.vo.CompanyListVO;
+import com.autoparts.ms.maintenance.vo.CompanyProfileVO;
+import com.autoparts.ms.maintenance.vo.CompanyUpdateVO;
 
 /**
  * @author sosseres

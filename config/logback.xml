@@ -43,7 +43,7 @@
 		</rollingPolicy>
 
         <encoder>
-            <pattern>%d %p %c [%M] %m%n</pattern>
+            <pattern>%d [%thread] %p %c [%M] %m%n</pattern>
         </encoder>
     </appender>
     <logger name="com.autoparts.core" level="debug" additivity="false">
@@ -62,7 +62,7 @@
 		</rollingPolicy>
 
         <encoder>
-            <pattern>%d %p %c %m%n</pattern>
+            <pattern>%d [%thread] %p %c %m%n</pattern>
         </encoder>
     </appender>
     <logger name="entity-profiler" level="debug" additivity="false">
@@ -81,7 +81,7 @@
 		</rollingPolicy>
 
         <encoder>
-            <pattern>%d %p %c [%M] %m%n</pattern>
+            <pattern>%d [%thread] %p %c [%M] %m%n</pattern>
         </encoder>
     </appender>
     <logger name="batch-profiler" level="debug" additivity="false">
@@ -98,7 +98,7 @@
 		</rollingPolicy>
 
         <encoder>
-            <pattern>%d %p %c [%M] %m%n</pattern>
+            <pattern>%d [%thread] %p %c [%M] %m%n</pattern>
         </encoder>
     </appender>
     <logger name="com.autoparts.common" level="debug" additivity="false">
@@ -116,7 +116,7 @@
 		</rollingPolicy>
 
         <encoder>
-            <pattern>%d %p %c [%M] %m%n</pattern>
+            <pattern>%d [%thread] %p %c [%M] %m%n</pattern>
         </encoder>
     </appender>
     <logger name="com.autoparts.jwt" level="debug" additivity="false">
@@ -137,7 +137,7 @@
 		</rollingPolicy>
 
         <encoder>
-            <pattern>%d %p %c [%M] %m%n</pattern>
+            <pattern>%d [%thread] %p %c [%M] %m%n</pattern>
         </encoder>
     </appender>
     <logger name="com.autoparts.ms.maintenance" level="debug" additivity="false">

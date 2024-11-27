@@ -133,7 +133,7 @@
 					<!-- Execution for Client JAR -->
 					<execution>
 						<id>client-jar</id>
-						<phase>deploy</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>jar</goal>
 						</goals>

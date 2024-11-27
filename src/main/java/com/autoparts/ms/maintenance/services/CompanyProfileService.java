@@ -41,7 +41,7 @@ public class CompanyProfileService {
 		
 		if(vo == null) {
 			log.warn("Reason: " + Reason.COMPANY_NOT_FOUND);
-			throw new ApplicationException(Reason.COMPANY_NOT_FOUND.name());
+			throw new ApplicationException(Reason.COMPANY_NOT_FOUND);
 		}
 		else {
 			return vo;
@@ -54,7 +54,7 @@ public class CompanyProfileService {
 		List<CompanyListVO> lst = companyProfileEntity.findCompanyByName(name, (page == 0 ? 1 : page), applicationParameter.pageSize);
 		
 		if(lst == null || lst.size() == 0) {
-			throw new ApplicationException(Reason.COMPANY_NOT_FOUND.name());
+			throw new ApplicationException(Reason.COMPANY_NOT_FOUND);
 		}
 		else {
 			return lst;
@@ -64,10 +64,13 @@ public class CompanyProfileService {
 	
 	public String createCompany(CompanyCreateVO vo) throws Exception {
 		String id = null;
-		String brn = vo.getBusinessRegisrationNumber();
 		
-		if(companyProfileEntity.findCompanyByBRN(brn) != null) {
-			throw new ApplicationException(Reason.COMPANY_BRN_DUPLICATE.name());
+//		if(companyProfileEntity.findCompanyByBRN(brn) != null) {
+//			throw new ApplicationException(Reason.DUPLICATE_BRN);
+//		}
+		
+		if(companyProfileEntity.findExistCompany(vo.getName(), vo.getBusinessRegisrationNumber()) != null) {
+			throw new ApplicationException(Reason.COMPANY_DUPLICATE_ERROR, vo.getName().toUpperCase());
 		}
 		else {
 			id = StringUtils.generateRandomId();
@@ -75,7 +78,7 @@ public class CompanyProfileService {
 			vo.setCreated(new Date());
 			vo.setCreatedBy(Common.SYSTEM_USER);
 			vo.setId(id);
-			vo.setStatus("ACTIVE");
+			vo.setStatus("ACTV");
 			
 			companyProfileEntity.create(vo);
 		}
@@ -86,7 +89,7 @@ public class CompanyProfileService {
 	public void updateCompany(CompanyUpdateVO vo) throws Exception {
 		
 		if(companyProfileEntity.findCompanyById(vo.getId()) == null) {
-			throw new ApplicationException(Reason.COMPANY_NOT_FOUND.name());
+			throw new ApplicationException(Reason.COMPANY_NOT_FOUND);
 		}else {
 			vo.setUpdated(new Date());
 			vo.setUpdatedBy(Common.SYSTEM_USER);

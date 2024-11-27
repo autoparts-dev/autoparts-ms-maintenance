@@ -44,7 +44,7 @@ public class UserProfileService {
 		List<UserProfileListVO> lst = userProfileEntity.findAllUser(companyId, page, applicationParameter.pageSize);
 		
 		if(lst == null || lst.size() == 0) {
-			throw new ApplicationException(Reason.USER_NOT_FOUND.name());
+			throw new ApplicationException(Reason.USER_NOT_FOUND);
 		}
 		else {
 			return lst;
@@ -56,7 +56,7 @@ public class UserProfileService {
 		UserProfileVO rst = userProfileEntity.findUserById(id);
 		
 		if(rst == null) {
-			throw new ApplicationException(Reason.USER_NOT_FOUND.name());	
+			throw new ApplicationException(Reason.USER_NOT_FOUND);	
 		}
 		else {
 			return rst;
@@ -67,7 +67,7 @@ public class UserProfileService {
 	public void updateUser(UserProfileUpdateVO vo) throws Exception {
 		
 		if(userProfileEntity.findUserById(vo.getId()) == null) {
-			throw new ApplicationException(Reason.USER_NOT_FOUND.name());	
+			throw new ApplicationException(Reason.USER_NOT_FOUND);	
 		}
 		else {
 			vo.setUpdated(new Date());
@@ -79,7 +79,7 @@ public class UserProfileService {
 	
 	public void deleteUser(String id) throws Exception {
 		if(userProfileEntity.findUserById(id) == null) {
-			throw new ApplicationException(Reason.USER_NOT_FOUND.name());	
+			throw new ApplicationException(Reason.USER_NOT_FOUND);	
 		}
 		else {
 			userProfileEntity.delete(id);

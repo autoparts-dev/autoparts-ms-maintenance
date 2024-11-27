@@ -19,6 +19,13 @@
 		<spring-cloud.version>2021.0.8</spring-cloud.version>
 	</properties>
 	
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/autoparts-dev/autoparts-ms-maintenance</url>
+		</repository>
+	</distributionManagement>
+	
 	<repositories>
 		<repository>
 			<id>github</id>
@@ -118,6 +125,31 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<!-- Execution for Client JAR -->
+					<execution>
+						<id>client-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<classifier>client</classifier> <!-- Adds '-client' to the JAR name -->
+							<includes>
+								<include>com/autoparts/ms/maintenance/vo/**</include> <!-- Client-specific code -->
+								<include>com/autoparts/ms/maintenance/client/**</include> <!-- Client-specific code -->
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			
+			
 		</plugins>
 		<finalName>autoparts-ms-maintenance</finalName>
 	</build>

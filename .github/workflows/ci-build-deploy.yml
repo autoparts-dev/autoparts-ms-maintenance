@@ -52,7 +52,7 @@ jobs:
 
     - name: Build with Maven
       # run: mvn -B package --file pom.xml
-      run: mvn clean install -P springboot-jar && mvn deploy -P client-jar -s $GITHUB_WORKSPACE/settings.xml -Dmaven.test.skip=true
+      run: mvn clean install -P springboot-jar -s $GITHUB_WORKSPACE/settings.xml -Dmaven.test.skip=true
 
     - name: Build Docker image
       run: |

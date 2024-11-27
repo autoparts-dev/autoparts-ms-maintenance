@@ -119,39 +119,50 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<executions>
-					<!-- Execution for Client JAR -->
-					<execution>
-						<id>client-jar</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-						<configuration>
-							<classifier>client</classifier> <!-- Adds '-client' to the JAR name -->
-							<includes>
-								<include>com/autoparts/ms/maintenance/vo/**</include> <!-- Client-specific code -->
-								<include>com/autoparts/ms/maintenance/client/**</include> <!-- Client-specific code -->
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			
-			
-			
-		</plugins>
-		<finalName>autoparts-ms-maintenance</finalName>
-	</build>
+	<profiles>
+		<profile>
+			<id>springboot-jar</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+				
+			</build>
+		</profile>
+		
+		<profile>
+			<id>client-jar</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jar-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>client-jar</id>
+								<phase>package</phase>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+								<configuration>
+									<classifier>client</classifier>
+									<includes>
+										<include>com/autoparts/ms/maintenance/vo/**</include> <!-- Client-specific code -->
+										<include>com/autoparts/ms/maintenance/client/**</include> <!-- Client-specific code -->
+									</includes>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+	</profiles>
+
+
 
 </project>

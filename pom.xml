@@ -119,8 +119,8 @@
 		</dependencies>
 	</dependencyManagement>
 	
-
-
+	
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -149,7 +149,7 @@
 					</execution>
 				</executions>
 			</plugin>
-						
+		
 			
 		</plugins>
 		<finalName>${project.artifactId}</finalName>

@@ -23,10 +23,10 @@ public interface CompanyProfileClient {
 
 
 	@GetMapping(path = "/findCompanyById/{id}", produces = "application/json")
-	public ResponseEntity findCompanyById(@PathVariable(name = "id") String id) throws Exception ;
+	public ResponseEntity<?> findCompanyById(@PathVariable(name = "id") String id) throws Exception ;
 	
 	@PostMapping(path = "/create", produces = "application/json", consumes = "application/json")
-	public ResponseEntity create(@RequestBody CompanyCreateVO vo) throws Exception;
+	public ResponseEntity<?> create(@RequestBody CompanyCreateVO vo) throws Exception;
 	
 	
 }

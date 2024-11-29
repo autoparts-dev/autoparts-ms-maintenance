@@ -47,21 +47,21 @@ public class CompanyProfileController {
 	}
 	
 	@GetMapping(path = "/ping", produces = "application/json")
-	public ResponseEntity ping() throws Exception {
+	public ResponseEntity<?> ping() throws Exception {
 		return responseHandler.ok();
 		
 	}
 	
 	
 	@GetMapping(path = "/findCompanyById/{id}", produces = "application/json")
-	public ResponseEntity findCompanyById(@PathVariable(name = "id") String id) throws Exception {
+	public ResponseEntity<?> findCompanyById(@PathVariable(name = "id") String id) throws Exception {
 		log.debug("call findCompanyById=" + id);
 		
 		return responseHandler.ok(companyProfileService.findCompanyById(id));
 	}
 	
 	@PostMapping(path = "/findCompanyByName", produces = "application/json", consumes = "application/json")
-	public ResponseEntity findCompanyByName(@RequestBody FindByCompanyNameVO vo) throws Exception {
+	public ResponseEntity<?> findCompanyByName(@RequestBody FindByCompanyNameVO vo) throws Exception {
 		log.debug("call findCompanyByName= {}, {}", vo.getName(), vo.getPage());
 		
 		return responseHandler.ok(
@@ -71,7 +71,7 @@ public class CompanyProfileController {
 	}
 	
 	@PostMapping(path = "/create", produces = "application/json", consumes = "application/json")
-	public ResponseEntity create(@RequestBody CompanyCreateVO vo) throws Exception {
+	public ResponseEntity<?> create(@RequestBody CompanyCreateVO vo) throws Exception {
 		log.debug("create new company.");
 		
 		String id = companyProfileService.createCompany(vo);
@@ -82,7 +82,7 @@ public class CompanyProfileController {
 	}
 	
 	@PostMapping(path = "/update", produces = "application/json", consumes = "application/json")
-	public ResponseEntity update(@RequestBody CompanyUpdateVO vo) throws Exception {
+	public ResponseEntity<?> update(@RequestBody CompanyUpdateVO vo) throws Exception {
 		
 		companyProfileService.updateCompany(vo);
 		
@@ -90,7 +90,7 @@ public class CompanyProfileController {
 	}
 	
 	@PostMapping(path = "/delete/{id}", produces = "application/json")
-	public ResponseEntity delete(@PathVariable(name = "id") String id) throws Exception{
+	public ResponseEntity<?> delete(@PathVariable(name = "id") String id) throws Exception{
 
 		companyProfileService.deleteCompany(id);
 		
@@ -98,7 +98,7 @@ public class CompanyProfileController {
 	}
 	
 	@PostMapping(path = "/remove/{id}", produces = "application/json")
-	public ResponseEntity remove(@PathVariable(name = "id") String id) throws Exception{
+	public ResponseEntity<?> remove(@PathVariable(name = "id") String id) throws Exception{
 		companyProfileService.removeCompany(id);
 		
 		return responseHandler.ok();	

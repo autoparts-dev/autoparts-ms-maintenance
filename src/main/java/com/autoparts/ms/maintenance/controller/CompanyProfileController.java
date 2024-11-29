@@ -72,6 +72,7 @@ public class CompanyProfileController {
 	
 	@PostMapping(path = "/create", produces = "application/json", consumes = "application/json")
 	public ResponseEntity create(@RequestBody CompanyCreateVO vo) throws Exception {
+		log.debug("create new company.");
 		
 		String id = companyProfileService.createCompany(vo);
 		

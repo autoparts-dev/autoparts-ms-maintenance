@@ -1,2 +1,2 @@
-INSERT INTO T_COMPANY (ID, NAME, BRN1, CONTACT_NUM, ADDR_LINE_1, ADDR_LINE_2, ADDR_LINE_3, POSTCODE, MT_STATE_ID, MT_CTRY_ID, STATUS, IS_DEL, CREATED, CREATED_BY)
+INSERT INTO T_COMPANY (ID, NAME, BRN, CONTACT_NUM, ADDR_LINE_1, ADDR_LINE_2, ADDR_LINE_3, POSTCODE, MT_STATE_ID, MT_CTRY_ID, STATUS, IS_DEL, CREATED, CREATED_BY)
 VALUES (:id, UPPER(:name), UPPER(:businessRegistrationNumber), :contactNumber, :addressLine1, :addressLine2, :addressLine3, :postcode, :stateId, :countryId, :status, 'N', :created, :createdBy)

@@ -34,6 +34,7 @@ public class CompanyCreateVO implements Serializable {
 	
 	@JsonAlias("brn")
 	@JsonProperty("brn")
+	@Mandatory
 	private String businessRegisrationNumber;
 	
 	@BindVariable

@@ -12,6 +12,9 @@ import com.autoparts.core.validator.json.annotation.Mandatory;
 import com.autoparts.core.validator.json.annotation.Regexp;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
@@ -21,6 +24,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 @JsonDeserialize(using = JsonDeserializeValidator.class)
 public class CompanyCreateVO implements Serializable {
 
+	@JsonInclude(value = Include.NON_NULL)
 	@BindVariable
 	private String id;
 	
@@ -29,8 +33,7 @@ public class CompanyCreateVO implements Serializable {
 	private String name;
 	
 	@JsonAlias("brn")
-	@BindVariable(name = "brn")
-	@Mandatory
+	@JsonProperty("brn")
 	private String businessRegisrationNumber;
 	
 	@BindVariable

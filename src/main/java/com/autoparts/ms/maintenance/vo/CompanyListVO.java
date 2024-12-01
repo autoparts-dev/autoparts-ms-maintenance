@@ -30,7 +30,7 @@ public class CompanyListVO extends PageObject implements Serializable {
 	
 	@Column(name = "BRN")
 	@BindVariable(name = "brn")
-	private String businessRegisrationNumber;
+	private String businessRegistrationNumber;
 	
 	@Column(name = "STATUS")
 	private String status;
@@ -64,6 +64,16 @@ public class CompanyListVO extends PageObject implements Serializable {
 	@Column(name = "COUNTRY")
 	private String country;
 	
+	public String getBusinessRegistrationNumber() {
+		return businessRegistrationNumber;
+	}
+
+
+	public void setBusinessRegistrationNumber(String businessRegistrationNumber) {
+		this.businessRegistrationNumber = businessRegistrationNumber;
+	}
+
+
 	/**
 	 * 
 	 */
@@ -90,18 +100,6 @@ public class CompanyListVO extends PageObject implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-	public String getBusinessRegisrationNumber() {
-		return businessRegisrationNumber;
-	}
-
-
-	public void setBusinessRegisrationNumber(String businessRegisrationNumber) {
-		this.businessRegisrationNumber = businessRegisrationNumber;
-	}
-
-
 
 	public String getStatus() {
 		return status;

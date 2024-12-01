@@ -52,7 +52,7 @@ public class CompanyProfileEntity extends BaseEntity{
 	@Transactional(propagation = Propagation.NOT_SUPPORTED)
 	public CompanyProfileVO findExistCompany(String name, String brn) throws EntityException {
 		CompanyProfileVO vo = new CompanyProfileVO();
-		vo.setBusinessRegisrationNumber(brn);
+		vo.setBusinessRegistrationNumber(brn);
 		vo.setName(name);
 		
 		return getSingleResult("COMPANY#DUPLICATE#S", vo);
@@ -63,7 +63,7 @@ public class CompanyProfileEntity extends BaseEntity{
 	public CompanyProfileVO findCompanyByBRN(String brn) throws EntityException {
 		
 		CompanyProfileVO vo = new CompanyProfileVO();
-		vo.setBusinessRegisrationNumber(brn);
+		vo.setBusinessRegistrationNumber(brn);
 			
 		List<CompanyProfileVO> lst = executeQuery("COMPANY#BRN#S", vo);
 		

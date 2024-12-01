@@ -29,7 +29,7 @@ public class CompanyProfileVO implements Serializable {
 	
 	@Column(name = "BRN")
 	@BindVariable(name = "brn")
-	private String businessRegisrationNumber;
+	private String businessRegistrationNumber;
 	
 	@Column(name = "STATUS")
 	private String status;
@@ -90,18 +90,6 @@ public class CompanyProfileVO implements Serializable {
 		this.name = name;
 	}
 
-
-	public String getBusinessRegisrationNumber() {
-		return businessRegisrationNumber;
-	}
-
-
-	public void setBusinessRegisrationNumber(String businessRegisrationNumber) {
-		this.businessRegisrationNumber = businessRegisrationNumber;
-	}
-
-
-
 	public String getStatus() {
 		return status;
 	}
@@ -129,6 +117,16 @@ public class CompanyProfileVO implements Serializable {
 
 	public void setAddressLine2(String addressLine2) {
 		this.addressLine2 = addressLine2;
+	}
+
+
+	public String getBusinessRegistrationNumber() {
+		return businessRegistrationNumber;
+	}
+
+
+	public void setBusinessRegistrationNumber(String businessRegistrationNumber) {
+		this.businessRegistrationNumber = businessRegistrationNumber;
 	}
 
 

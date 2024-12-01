@@ -30,7 +30,7 @@ public class CompanyUpdateVO implements Serializable {
 	
 	@BindVariable(name = "brn")
 	@Mandatory
-	private String businessRegisrationNumber;
+	private String businessRegistrationNumber;
 	
 	@BindVariable
 	@Regexp("^\\d{9,11}$")
@@ -109,6 +109,16 @@ public class CompanyUpdateVO implements Serializable {
 	}
 
 
+	public String getBusinessRegistrationNumber() {
+		return businessRegistrationNumber;
+	}
+
+
+	public void setBusinessRegistrationNumber(String businessRegistrationNumber) {
+		this.businessRegistrationNumber = businessRegistrationNumber;
+	}
+
+
 	public String getName() {
 		return name;
 	}
@@ -118,15 +128,6 @@ public class CompanyUpdateVO implements Serializable {
 		this.name = name;
 	}
 
-
-	public String getBusinessRegisrationNumber() {
-		return businessRegisrationNumber;
-	}
-
-
-	public void setBusinessRegisrationNumber(String businessRegisrationNumber) {
-		this.businessRegisrationNumber = businessRegisrationNumber;
-	}
 
 
 	public String getContactNumber() {

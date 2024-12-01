@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.autoparts.common.web.ResponseHandler;
+import com.autoparts.common.web.vo.ResponseVO;
 import com.autoparts.ms.maintenance.services.CompanyProfileService;
 import com.autoparts.ms.maintenance.vo.CompanyCreateVO;
 import com.autoparts.ms.maintenance.vo.CompanyUpdateVO;
@@ -71,7 +72,7 @@ public class CompanyProfileController {
 	}
 	
 	@PostMapping(path = "/create", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<?> create(@RequestBody CompanyCreateVO vo) throws Exception {
+	public ResponseEntity<ResponseVO> create(@RequestBody CompanyCreateVO vo) throws Exception {
 		log.debug("create new company.");
 		
 		String id = companyProfileService.createCompany(vo);

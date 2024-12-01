@@ -35,7 +35,7 @@ public class CompanyCreateVO implements Serializable {
 	@JsonAlias("brn")
 	@JsonProperty("brn")
 	@Mandatory
-	private String businessRegisrationNumber;
+	private String businessRegistrationNumber;
 	
 	@BindVariable
 	@JsonIgnore
@@ -100,12 +100,12 @@ public class CompanyCreateVO implements Serializable {
 
 
 	public String getBusinessRegisrationNumber() {
-		return businessRegisrationNumber;
+		return businessRegistrationNumber;
 	}
 
 
-	public void setBusinessRegisrationNumber(String businessRegisrationNumber) {
-		this.businessRegisrationNumber = businessRegisrationNumber;
+	public void setBusinessRegisrationNumber(String businessRegistrationNumber) {
+		this.businessRegistrationNumber = businessRegistrationNumber;
 	}
 
 

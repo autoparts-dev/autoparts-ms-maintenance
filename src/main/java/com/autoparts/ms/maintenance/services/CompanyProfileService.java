@@ -69,7 +69,7 @@ public class CompanyProfileService {
 //			throw new ApplicationException(Reason.DUPLICATE_BRN);
 //		}
 		
-		if(companyProfileEntity.findExistCompany(vo.getName(), vo.getBusinessRegisrationNumber()) != null) {
+		if(companyProfileEntity.findExistCompany(vo.getName(), vo.getBusinessRegistrationNumber()) != null) {
 			throw new ApplicationException(Reason.COMPANY_DUPLICATE_ERROR, vo.getName().toUpperCase());
 		}
 		else {

@@ -98,13 +98,12 @@ public class CompanyCreateVO implements Serializable {
 		this.name = name;
 	}
 
-
-	public String getBusinessRegisrationNumber() {
+	public String getBusinessRegistrationNumber() {
 		return businessRegistrationNumber;
 	}
 
 
-	public void setBusinessRegisrationNumber(String businessRegistrationNumber) {
+	public void setBusinessRegistrationNumber(String businessRegistrationNumber) {
 		this.businessRegistrationNumber = businessRegistrationNumber;
 	}
 

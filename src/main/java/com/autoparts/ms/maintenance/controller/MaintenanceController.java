@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.autoparts.common.web.ResponseHandler;
+import com.autoparts.common.web.controller.ResponseController;
+import com.autoparts.common.web.vo.ResponseVO;
 import com.autoparts.ms.maintenance.services.MaintenanceService;
 
 /**
@@ -24,7 +25,7 @@ public class MaintenanceController {
 	private MaintenanceService maintenanceService;
 	
 	@Autowired
-	private ResponseHandler responseHandler;
+	private ResponseController responseController;
 	
 	/**
 	 * 
@@ -33,17 +34,17 @@ public class MaintenanceController {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@GetMapping(path = "/ping", produces = "application/json")
-	public ResponseEntity ping() throws Exception {
-		return responseHandler.ok();
-		
-	}
+//	@GetMapping(path = "/ping", produces = "application/json")
+//	public ResponseEntity ping() throws Exception {
+//		return responseHandler.ok();
+//		
+//	}
 	
 	@GetMapping(path = "/getListOfProductCategory", produces = "application/json")
-	public ResponseEntity getListOfProductCategory() throws Exception{
+	public ResponseEntity<ResponseVO> getListOfProductCategory() throws Exception{
 		
 		
-		return responseHandler.ok(maintenanceService.getListOfProductCategory());
+		return responseController.ok(maintenanceService.getListOfProductCategory());
 		
 	}
 

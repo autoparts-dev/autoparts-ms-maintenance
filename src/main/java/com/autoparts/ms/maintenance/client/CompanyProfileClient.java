@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.autoparts.common.FeignClientConfig;
+import com.autoparts.common.config.FeignClientConfig;
 import com.autoparts.common.web.vo.ResponseVO;
 import com.autoparts.ms.maintenance.vo.CompanyCreateVO;
 

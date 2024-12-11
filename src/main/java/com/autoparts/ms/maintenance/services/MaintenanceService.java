@@ -34,11 +34,11 @@ public class MaintenanceService {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public List<ProductCategoryVO> getListOfProductCategory() throws Exception {
+	public List<ProductCategoryVO> getProductCategory() throws Exception {
 		List<ProductCategoryVO> lst;
 		
 		try {
-			lst = maintenanceEntity.getListOfProductCategory();
+			lst = maintenanceEntity.getProductCategory();
 			log.debug("product category lsit: {}", lst.size());
 			
 		} catch (EntityException e) {

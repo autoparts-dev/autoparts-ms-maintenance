@@ -7,8 +7,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -29,7 +29,7 @@ import com.autoparts.ms.maintenance.vo.CompanyUpdateVO;
 public class CompanyProfileEntity extends BaseEntity{
 	
 
-	private static Logger log = LoggerFactory.getLogger(CompanyProfileEntity.class.getName());
+//	private static Logger log = LoggerFactory.getLogger(CompanyProfileEntity.class.getName());
 
 	/**
 	 * 
@@ -93,6 +93,7 @@ public class CompanyProfileEntity extends BaseEntity{
 		return executeQuery("COMPANY#NAME#S", vo);
 	}
 	
+	
 	@Transactional
 	public int create(CompanyCreateVO vo) throws EntityException {
 		return execute("COMPANY#I", vo);
@@ -103,13 +104,13 @@ public class CompanyProfileEntity extends BaseEntity{
 		return execute("COMPANY#U", vo);
 	}
 	
-	@Transactional
-	public int delete(String id) throws EntityException {
-		CompanyUpdateVO vo = new CompanyUpdateVO();
-		vo.setId(id);
-		
-		return execute("COMPANY#D", vo);
-	}
+//	@Transactional
+//	public int delete(String id) throws EntityException {
+//		CompanyUpdateVO vo = new CompanyUpdateVO();
+//		vo.setId(id);
+//		
+//		return execute("COMPANY#D", vo);
+//	}
 	
 	
 

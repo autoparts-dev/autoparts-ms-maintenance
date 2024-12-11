@@ -32,7 +32,7 @@ public class MaintenanceEntity extends BaseEntity{
 	}
 	
 	@Transactional(propagation = Propagation.NOT_SUPPORTED)
-	public List<ProductCategoryVO> getListOfProductCategory() throws EntityException{
+	public List<ProductCategoryVO> getProductCategory() throws EntityException{
 		ProductCategoryVO vo = new ProductCategoryVO();
 		
 		return executeQuery("PROD_CATGS#S", vo);

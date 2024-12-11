@@ -150,6 +150,7 @@
 							<includes>
 								<include>com/autoparts/ms/maintenance/vo/**</include> <!-- Client-specific code -->
 								<include>com/autoparts/ms/maintenance/client/**</include> <!-- Client-specific code -->
+								<include>com/autoparts/ms/maintenance/constants/**</include> <!-- Client-specific code -->
 							</includes>
 						</configuration>
 					</execution>

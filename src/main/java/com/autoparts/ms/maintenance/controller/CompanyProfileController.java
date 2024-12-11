@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.autoparts.common.web.controller.ResponseController;
+import com.autoparts.common.web.utils.ResponseUtils;
 import com.autoparts.common.web.vo.ResponseVO;
 import com.autoparts.ms.maintenance.services.CompanyProfileService;
 import com.autoparts.ms.maintenance.vo.CompanyCreateVO;
@@ -29,6 +29,7 @@ import com.autoparts.ms.maintenance.vo.FindByCompanyNameVO;
  * 
  */
 @RestController 
+//TODO backoffice service /ap/backoffice/company/v1
 @RequestMapping("/ap/maintenance/company/v1")
 public class CompanyProfileController {
 	
@@ -38,34 +39,34 @@ public class CompanyProfileController {
 	private CompanyProfileService companyProfileService;
 	
 	@Autowired
-	private ResponseController responseController;
-
-	/**
+	private ResponseUtils responseUtils;
+	
+	/*
 	 * 
 	 */
 	public CompanyProfileController() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@GetMapping(path = "/ping", produces = "application/json")
-	public ResponseEntity<ResponseVO> ping() throws Exception {
-		return responseController.ok();
-		
-	}
+//	@GetMapping(path = "/ping", produces = "application/json")
+//	public ResponseEntity<ResponseVO> ping() throws Exception {
+//		return responseUtils.ok();
+//		
+//	}
 	
 	
 	@GetMapping(path = "/findCompanyById/{id}", produces = "application/json")
 	public ResponseEntity<ResponseVO> findCompanyById(@PathVariable(name = "id") String id) throws Exception {
 		log.debug("call findCompanyById=" + id);
 		
-		return responseController.ok(companyProfileService.findCompanyById(id));
+		return responseUtils.ok(companyProfileService.findCompanyById(id));
 	}
 	
 	@PostMapping(path = "/findCompanyByName", produces = "application/json", consumes = "application/json")
 	public ResponseEntity<ResponseVO> findCompanyByName(@RequestBody FindByCompanyNameVO vo) throws Exception {
 		log.debug("call findCompanyByName= {}, {}", vo.getName(), vo.getPage());
 		
-		return responseController.ok(
+		return responseUtils.ok(
 				companyProfileService.findCompanyByName(
 						vo.getName(), vo.getPage()));
 		
@@ -77,7 +78,7 @@ public class CompanyProfileController {
 		
 		String id = companyProfileService.createCompany(vo);
 		
-		return responseController.ok(
+		return responseUtils.ok(
 				new HashMap<>() {{put("id", id);}}
 		);
 	}
@@ -87,22 +88,15 @@ public class CompanyProfileController {
 		
 		companyProfileService.updateCompany(vo);
 		
-		return responseController.ok();
+		return responseUtils.ok();
 	}
+
 	
 	@PostMapping(path = "/delete/{id}", produces = "application/json")
 	public ResponseEntity<ResponseVO> delete(@PathVariable(name = "id") String id) throws Exception{
-
 		companyProfileService.deleteCompany(id);
 		
-		return responseController.ok();	
-	}
-	
-	@PostMapping(path = "/remove/{id}", produces = "application/json")
-	public ResponseEntity<ResponseVO> remove(@PathVariable(name = "id") String id) throws Exception{
-		companyProfileService.removeCompany(id);
-		
-		return responseController.ok();	
+		return responseUtils.ok();	
 	}
 	
 	

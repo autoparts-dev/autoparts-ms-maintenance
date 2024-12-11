@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.autoparts.common.web.controller.ResponseController;
+import com.autoparts.common.web.utils.ResponseUtils;
 import com.autoparts.common.web.vo.ResponseVO;
 import com.autoparts.ms.maintenance.services.MaintenanceService;
 
@@ -25,7 +25,7 @@ public class MaintenanceController {
 	private MaintenanceService maintenanceService;
 	
 	@Autowired
-	private ResponseController responseController;
+	private ResponseUtils responseUtils;
 	
 	/**
 	 * 
@@ -40,11 +40,11 @@ public class MaintenanceController {
 //		
 //	}
 	
-	@GetMapping(path = "/getListOfProductCategory", produces = "application/json")
-	public ResponseEntity<ResponseVO> getListOfProductCategory() throws Exception{
+	@GetMapping(path = "/getProductCategory", produces = "application/json")
+	public ResponseEntity<ResponseVO> getProductCategory() throws Exception{
 		
 		
-		return responseController.ok(maintenanceService.getListOfProductCategory());
+		return responseUtils.ok(maintenanceService.getProductCategory());
 		
 	}
 

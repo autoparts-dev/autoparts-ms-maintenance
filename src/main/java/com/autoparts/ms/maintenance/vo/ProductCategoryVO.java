@@ -23,11 +23,11 @@ public class ProductCategoryVO implements Serializable{
 	@Column(name = "NAME")
 	private String name;
 	
-	@Column(name = "CD")
-	private String code;
+//	@Column(name = "CD")
+//	private String code;
 	
-	@Column(name = "IMG_PATH")
-	private String imagePath;
+//	@Column(name = "IMG_PATH")
+//	private String imagePath;
 	
 	
 	/**
@@ -58,23 +58,23 @@ public class ProductCategoryVO implements Serializable{
 	}
 
 
-	public String getImagePath() {
-		return imagePath;
-	}
-
-
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
-
-
-	public String getCode() {
-		return code;
-	}
-
-
-	public void setCode(String code) {
-		this.code = code;
-	}
+//	public String getImagePath() {
+//		return imagePath;
+//	}
+//
+//
+//	public void setImagePath(String imagePath) {
+//		this.imagePath = imagePath;
+//	}
+//
+//
+//	public String getCode() {
+//		return code;
+//	}
+//
+//
+//	public void setCode(String code) {
+//		this.code = code;
+//	}
 
 }

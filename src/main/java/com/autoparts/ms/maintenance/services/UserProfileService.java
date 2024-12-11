@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 import com.autoparts.common.ApplicationParameter;
 import com.autoparts.common.constants.Common;
 import com.autoparts.common.constants.UserStatus;
-import com.autoparts.common.web.constants.Reason;
 import com.autoparts.core.exception.ApplicationException;
+import com.autoparts.ms.maintenance.constants.UserProfileResponseStatus;
 import com.autoparts.ms.maintenance.repository.UserProfileEntity;
 import com.autoparts.ms.maintenance.vo.UserProfileListVO;
 import com.autoparts.ms.maintenance.vo.UserProfileUpdateVO;
@@ -44,7 +44,7 @@ public class UserProfileService {
 		List<UserProfileListVO> lst = userProfileEntity.findAllUser(companyId, page, applicationParameter.pageSize);
 		
 		if(lst == null || lst.size() == 0) {
-			throw new ApplicationException(Reason.USER_NOT_FOUND);
+			throw new ApplicationException(UserProfileResponseStatus.USER_NOT_FOUND);
 		}
 		else {
 			return lst;
@@ -56,7 +56,7 @@ public class UserProfileService {
 		UserProfileVO rst = userProfileEntity.findUserById(id);
 		
 		if(rst == null) {
-			throw new ApplicationException(Reason.USER_NOT_FOUND);	
+			throw new ApplicationException(UserProfileResponseStatus.USER_NOT_FOUND);	
 		}
 		else {
 			return rst;
@@ -67,7 +67,7 @@ public class UserProfileService {
 	public void updateUser(UserProfileUpdateVO vo) throws Exception {
 		
 		if(userProfileEntity.findUserById(vo.getId()) == null) {
-			throw new ApplicationException(Reason.USER_NOT_FOUND);	
+			throw new ApplicationException(UserProfileResponseStatus.USER_NOT_FOUND);	
 		}
 		else {
 			vo.setUpdated(new Date());
@@ -79,7 +79,7 @@ public class UserProfileService {
 	
 	public void deleteUser(String id) throws Exception {
 		if(userProfileEntity.findUserById(id) == null) {
-			throw new ApplicationException(Reason.USER_NOT_FOUND);	
+			throw new ApplicationException(UserProfileResponseStatus.USER_NOT_FOUND);	
 		}
 		else {
 			userProfileEntity.delete(id);
@@ -87,7 +87,7 @@ public class UserProfileService {
 	}
 	
 	public void deactivate(String id) throws Exception {
-		this.updateUserStatus(id, UserStatus.DORMANT);
+		this.updateUserStatus(id, UserStatus.DEACTIVATE);
 	}
 	
 	public void activate(String id) throws Exception {

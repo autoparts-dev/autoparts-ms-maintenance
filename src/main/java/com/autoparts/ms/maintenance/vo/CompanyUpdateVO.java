@@ -10,7 +10,9 @@ import com.autoparts.core.entity.annotation.BindVariable;
 import com.autoparts.core.validator.json.JsonDeserializeValidator;
 import com.autoparts.core.validator.json.annotation.Mandatory;
 import com.autoparts.core.validator.json.annotation.Regexp;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
@@ -28,6 +30,8 @@ public class CompanyUpdateVO implements Serializable {
 	@Mandatory
 	private String name;
 	
+	@JsonAlias("brn")	// deserialise
+	@JsonProperty("brn")	// serialise
 	@BindVariable(name = "brn")
 	@Mandatory
 	private String businessRegistrationNumber;

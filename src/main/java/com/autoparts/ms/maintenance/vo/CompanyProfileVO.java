@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import com.autoparts.core.entity.annotation.BindVariable;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author sosseres
@@ -29,6 +31,7 @@ public class CompanyProfileVO implements Serializable {
 	
 	@Column(name = "BRN")
 	@BindVariable(name = "brn")
+	@JsonProperty("brn")	// serialise
 	private String businessRegistrationNumber;
 	
 	@Column(name = "STATUS")
@@ -51,7 +54,6 @@ public class CompanyProfileVO implements Serializable {
 
 	@Column(name = "MT_STATE_ID")
 	private String stateId;
-
 
 	@Column(name = "MT_CTRY_ID")
 	private String countryId;

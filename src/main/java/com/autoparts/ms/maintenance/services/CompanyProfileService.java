@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.autoparts.common.ApplicationParameter;
 import com.autoparts.common.constants.Common;
 import com.autoparts.common.constants.CompanyStatus;
+import com.autoparts.core.entity.Action;
 import com.autoparts.core.exception.ApplicationException;
 import com.autoparts.core.utils.StringUtils;
 import com.autoparts.ms.maintenance.constants.CompanyProfileResponseReason;
@@ -20,6 +21,7 @@ import com.autoparts.ms.maintenance.vo.CompanyCreateVO;
 import com.autoparts.ms.maintenance.vo.CompanyListVO;
 import com.autoparts.ms.maintenance.vo.CompanyProfileVO;
 import com.autoparts.ms.maintenance.vo.CompanyUpdateVO;
+import com.autoparts.ms.maintenance.vo.RollbackVO;
 
 @Service
 public class CompanyProfileService {
@@ -31,6 +33,9 @@ public class CompanyProfileService {
 	
 	@Autowired
 	private ApplicationParameter applicationParameter;
+	
+	@Autowired
+	private CompanyProfileRollbackService companyProfileRollbackService;
 	
 	
 	public CompanyProfileService() {
@@ -51,18 +56,18 @@ public class CompanyProfileService {
 	}
 	
 	
-	public List<CompanyListVO> findCompanyByName(String name, int page) throws Exception {
-		
-		List<CompanyListVO> lst = companyProfileEntity.findCompanyByName(name, (page == 0 ? 1 : page), applicationParameter.pageSize);
-		
-		if(lst == null || lst.size() == 0) {
-			throw new ApplicationException(CompanyProfileResponseReason.COMPANY_NOT_FOUND);
-		}
-		else {
-			return lst;
-		}
-		
-	}
+//	public List<CompanyListVO> findCompanyByName(String name, int page) throws Exception {
+//		
+//		List<CompanyListVO> lst = companyProfileEntity.findCompanyByName(name, (page == 0 ? 1 : page), applicationParameter.pageSize);
+//		
+//		if(lst == null || lst.size() == 0) {
+//			throw new ApplicationException(CompanyProfileResponseReason.COMPANY_NOT_FOUND);
+//		}
+//		else {
+//			return lst;
+//		}
+//		
+//	}
 	
 	@Transactional(rollbackFor = Exception.class)
 	public String createCompany(CompanyCreateVO vo) throws Exception {
@@ -81,6 +86,7 @@ public class CompanyProfileService {
 			
 			companyProfileEntity.create(vo);
 			
+			companyProfileRollbackService.set(id, new RollbackVO(id, Action.INSERT, "T_COMPANY", null));
 		}
 		
 		return id;

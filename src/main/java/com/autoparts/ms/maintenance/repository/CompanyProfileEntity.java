@@ -104,13 +104,13 @@ public class CompanyProfileEntity extends BaseEntity{
 		return execute("COMPANY#U", vo);
 	}
 	
-//	@Transactional
-//	public int delete(String id) throws EntityException {
-//		CompanyUpdateVO vo = new CompanyUpdateVO();
-//		vo.setId(id);
-//		
-//		return execute("COMPANY#D", vo);
-//	}
+	@Transactional
+	public int delete(String id) throws EntityException {
+		CompanyUpdateVO vo = new CompanyUpdateVO();
+		vo.setId(id);
+		
+		return execute("COMPANY#D", vo);
+	}
 	
 	
 

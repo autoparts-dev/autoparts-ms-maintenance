@@ -35,7 +35,7 @@ public class CompanyProfileService {
 	private ApplicationParameter applicationParameter;
 	
 	@Autowired
-	private CompanyProfileRollbackService companyProfileRollbackService;
+	private CompanyProfileEntryService companyProfileEntryService;
 	
 	
 	public CompanyProfileService() {
@@ -85,8 +85,7 @@ public class CompanyProfileService {
 			vo.setStatus(CompanyStatus.ACTIVE);
 			
 			companyProfileEntity.create(vo);
-			
-			companyProfileRollbackService.set(id, new RollbackVO(id, Action.INSERT, "T_COMPANY", null));
+			companyProfileEntryService.setRolllbackEntry(id, new RollbackVO(id, Action.INSERT, "T_COMPANY", null));
 		}
 		
 		return id;

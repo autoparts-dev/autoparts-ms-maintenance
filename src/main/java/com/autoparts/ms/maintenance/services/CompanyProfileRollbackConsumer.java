@@ -25,7 +25,7 @@ public class CompanyProfileRollbackConsumer {
 	private static Logger log = LoggerFactory.getLogger(CompanyProfileRollbackConsumer.class.getName());
 
 	@Autowired
-	private CompanyProfileRollbackService companyProfileRollbackService;
+	private CompanyProfileEntryService companyProfileEntryService;
 	
 	@Autowired
 	private CompanyProfileEntity companyProfileEntity;
@@ -41,7 +41,7 @@ public class CompanyProfileRollbackConsumer {
 	@KafkaListener(topics = "${kafka.rollbackCompanyProfile.topic}", groupId = "${kafka.rollbackCompanyProfile.groupId}", concurrency = "${kafka.rollbackCompanyProfile.consumer-concurrency}", containerFactory = "defaultKafkaListenerContainerFactory")
 	public void consume(ConsumerRecord<String, String> message) {
 		
-		RollbackVO vo = companyProfileRollbackService.get(message.value());
+		RollbackVO vo = companyProfileEntryService.getRollbackEntry(message.value());
 		
 		log.debug("perform rollback action, id: {}, {}, {}", vo.getId(), vo.getTableName(), vo.getAction().name());
 		

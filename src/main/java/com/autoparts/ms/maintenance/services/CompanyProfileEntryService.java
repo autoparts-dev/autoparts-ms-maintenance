@@ -17,32 +17,32 @@ import com.autoparts.ms.maintenance.vo.RollbackVO;
  *
  */
 @Service
-public class CompanyProfileRollbackService {
+public class CompanyProfileEntryService {
 	
-	private static Logger log = LoggerFactory.getLogger(CompanyProfileRollbackService.class.getName());
+	private static Logger log = LoggerFactory.getLogger(CompanyProfileEntryService.class.getName());
 
 	/**
 	 * 
 	 */
-	public CompanyProfileRollbackService() {
+	public CompanyProfileEntryService() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Cacheable(cacheNames = "companyProfileRollbackEntry", key = "#cacheId")
-	public RollbackVO get(String cacheId) {
+	public RollbackVO getRollbackEntry(String cacheId) {
 		log.info("get from companyProfileRollback cache with {}", cacheId);
 		return null;
 	}
 	
 	@CachePut(cacheNames = "companyProfileRollbackEntry", key = "#cacheId")
-	public RollbackVO set(String cacheId, RollbackVO vo) {
+	public RollbackVO setRolllbackEntry(String cacheId, RollbackVO vo) {
 		log.info("set into companyProfileRollbackEntry cache with {}", cacheId);
 		return vo;
 		
 	}
 	
 	@CacheEvict(cacheNames = "companyProfileRollbackEntry", key = "#cacheId")
-	public void remove(String cacheId) {
+	public void removeRollbackEntry(String cacheId) {
 		log.info("remove cacheId: {} from companyProfileRollbackEntry cache", cacheId);
 	}
 	

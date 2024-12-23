@@ -21,6 +21,7 @@ import com.autoparts.ms.maintenance.vo.RollbackVO;
  *
  */
 @Service
+@Deprecated
 public class CacheService {
 	
 //	@Autowired

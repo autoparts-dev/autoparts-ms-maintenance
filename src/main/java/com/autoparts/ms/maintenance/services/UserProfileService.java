@@ -99,7 +99,7 @@ public class UserProfileService {
 		
 		UserProfileUpdateVO vo = new UserProfileUpdateVO();
 		vo.setId(id);
-		vo.setStatus(status);
+		vo.setStatusId(status);
 		vo.setUpdated(new Date());
 		vo.setUpdatedBy(Common.SYSTEM_USER);
 		

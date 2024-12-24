@@ -82,7 +82,7 @@ public class CompanyProfileService {
 			vo.setCreated(new Date());
 			vo.setCreatedBy(Common.SYSTEM_USER);
 			vo.setId(id);
-			vo.setStatus(CompanyStatus.ACTIVE);
+			vo.setStatusId(CompanyStatus.ACTIVE);
 			
 			companyProfileEntity.create(vo);
 			companyProfileEntryService.setRolllbackEntry(id, new RollbackVO(id, Action.INSERT, "T_COMPANY", null));
@@ -114,7 +114,7 @@ public class CompanyProfileService {
 		vo.setId(id);
 		vo.setUpdated(new Date());
 		vo.setUpdatedBy(Common.SYSTEM_USER);
-		vo.setStatus(CompanyStatus.DELETED);
+		vo.setStatusId(CompanyStatus.DELETED);
 		vo.setDelete("Y");
 		
 		int r = companyProfileEntity.update(vo);

@@ -41,8 +41,8 @@ public class UserProfileVO implements Serializable{
 	@Column(name = "COMPANY_NM")
 	private String companyName;
 	
-	@Column(name = "STATUS")
-	private String status;
+	@Column(name = "STATUS_ID")
+	private String statusId;
 	
 	
 	/**
@@ -89,11 +89,11 @@ public class UserProfileVO implements Serializable{
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
-	public String getStatus() {
-		return status;
+	public String getStatusId() {
+		return statusId;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setStatusId(String statusId) {
+		this.statusId = statusId;
 	}
 	
 	public String getCompanyName() {

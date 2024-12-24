@@ -68,7 +68,7 @@ public class CompanyUpdateVO implements Serializable {
 	
 	@BindVariable
 	@JsonIgnore
-	private String status;
+	private String statusId;
 	
 	@BindVariable
 	@JsonIgnore
@@ -203,13 +203,13 @@ public class CompanyUpdateVO implements Serializable {
 	}
 
 
-	public String getStatus() {
-		return status;
+	public String getStatusId() {
+		return statusId;
 	}
 
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setStatusId(String statusId) {
+		this.statusId = statusId;
 	}
 
 

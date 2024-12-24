@@ -32,8 +32,8 @@ public class CompanyListVO extends PageObject implements Serializable {
 	@BindVariable(name = "brn")
 	private String businessRegistrationNumber;
 	
-	@Column(name = "STATUS")
-	private String status;
+	@Column(name = "STATUS_ID")
+	private String statusId;
 
 	@Column(name = "CONTACT_NUM")
 	private String contactNumber;
@@ -101,13 +101,13 @@ public class CompanyListVO extends PageObject implements Serializable {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getStatusId() {
+		return statusId;
 	}
 
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setStatusId(String statusId) {
+		this.statusId = statusId;
 	}
 
 

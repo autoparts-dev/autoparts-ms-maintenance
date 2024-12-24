@@ -60,7 +60,7 @@ public class RedisConfig {
 
 		RedisCacheManager cacheManager = RedisCacheManager.builder(factory)
 //				.withCacheConfiguration(RedisConfig.TEST_ENTRY, RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMillis(10000)))
-				.withCacheConfiguration("companyProfileRollbackEntry", RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMillis(30000)))
+				.withCacheConfiguration("companyProfileRollbackEntry", RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMillis(60000)))
 				.build()
 				;
 		

@@ -69,6 +69,8 @@ public class CompanyProfileRollbackConsumer {
 		else {
 			log.warn("Unknown rollback action {} {}", vo.getId(), vo.getAction().name());
 		}
+		
+		log.debug("rollback complete, id: {}", vo.getId());
 	}
 
 }

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan({"com.autoparts"})
 @EnableEurekaClient
-//@EnableCaching
+@EnableCaching
 public class AutopartsMsMaintenanceApplication {
 
 	public static void main(String[] args) {

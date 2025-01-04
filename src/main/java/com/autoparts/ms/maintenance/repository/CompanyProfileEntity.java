@@ -3,6 +3,7 @@
  */
 package com.autoparts.ms.maintenance.repository;
 
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -111,7 +112,6 @@ public class CompanyProfileEntity extends BaseEntity{
 		
 		return execute("COMPANY#D", vo);
 	}
-	
-	
 
+	
 }

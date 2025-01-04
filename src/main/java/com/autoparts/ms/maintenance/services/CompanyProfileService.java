@@ -1,7 +1,7 @@
 package com.autoparts.ms.maintenance.services;
 
 import java.util.Date;
-import java.util.List;
+//import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,16 +12,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.autoparts.common.ApplicationParameter;
 import com.autoparts.common.constants.Common;
 import com.autoparts.common.constants.CompanyStatus;
-import com.autoparts.core.entity.Action;
+//import com.autoparts.core.entity.Action;
 import com.autoparts.core.exception.ApplicationException;
 import com.autoparts.core.utils.StringUtils;
 import com.autoparts.ms.maintenance.constants.CompanyProfileResponseReason;
 import com.autoparts.ms.maintenance.repository.CompanyProfileEntity;
 import com.autoparts.ms.maintenance.vo.CompanyCreateVO;
-import com.autoparts.ms.maintenance.vo.CompanyListVO;
+//import com.autoparts.ms.maintenance.vo.CompanyListVO;
 import com.autoparts.ms.maintenance.vo.CompanyProfileVO;
 import com.autoparts.ms.maintenance.vo.CompanyUpdateVO;
-import com.autoparts.ms.maintenance.vo.RollbackVO;
 
 @Service
 public class CompanyProfileService {
@@ -33,9 +32,6 @@ public class CompanyProfileService {
 	
 	@Autowired
 	private ApplicationParameter applicationParameter;
-	
-	@Autowired
-	private CompanyProfileEntryService companyProfileEntryService;
 	
 	
 	public CompanyProfileService() {
@@ -71,6 +67,7 @@ public class CompanyProfileService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	public String createCompany(CompanyCreateVO vo) throws Exception {
+
 		String id = null;
 		
 		if(companyProfileEntity.findExistCompany(vo.getName(), vo.getBusinessRegistrationNumber()) != null) {
@@ -84,8 +81,9 @@ public class CompanyProfileService {
 			vo.setId(id);
 			vo.setStatusId(CompanyStatus.ACTIVE);
 			
+			
 			companyProfileEntity.create(vo);
-			companyProfileEntryService.setRolllbackEntry(id, new RollbackVO(id, Action.INSERT, "T_COMPANY", null));
+//			
 		}
 		
 		return id;

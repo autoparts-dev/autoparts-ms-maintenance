@@ -18,8 +18,8 @@ import com.autoparts.ms.maintenance.vo.CompanyCreateVO;
  * @author sosseres
  *
  */
-@FeignClient(contextId = "CompanyProfileClient", name = "maintenance-service", path = "/ap/maintenance/company/v1", configuration = FeignClientConfig.class)
-//@FeignClient(contextId = "CompanyProfileClient", name = "maintenance-service", path = "/ap/maintenance/company/v1", configuration = FeignClientConfig.class, url = "localhost:8080")
+//@FeignClient(contextId = "CompanyProfileClient", name = "maintenance-service", path = "/ap/maintenance/company/v1", configuration = FeignClientConfig.class)
+@FeignClient(contextId = "CompanyProfileClient", name = "maintenance-service", path = "/ap/maintenance/company/v1", configuration = FeignClientConfig.class, url = "localhost:8081")
 public interface CompanyProfileClient {
 
 

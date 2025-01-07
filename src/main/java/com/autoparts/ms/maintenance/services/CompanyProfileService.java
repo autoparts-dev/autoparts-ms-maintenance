@@ -67,7 +67,8 @@ public class CompanyProfileService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	public String createCompany(CompanyCreateVO vo) throws Exception {
-
+		log.debug("start to create company");
+		
 		String id = null;
 		
 		if(companyProfileEntity.findExistCompany(vo.getName(), vo.getBusinessRegistrationNumber()) != null) {
@@ -86,6 +87,7 @@ public class CompanyProfileService {
 //			
 		}
 		
+		log.debug("compamy is created");
 		return id;
 	}
 	

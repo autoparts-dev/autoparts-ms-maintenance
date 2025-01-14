@@ -26,8 +26,8 @@ public class ProductCategoryVO implements Serializable{
 //	@Column(name = "CD")
 //	private String code;
 	
-//	@Column(name = "IMG_PATH")
-//	private String imagePath;
+	@Column(name = "IMG_FL_PATH")
+	private String imageFilePath;
 	
 	
 	/**
@@ -55,6 +55,16 @@ public class ProductCategoryVO implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+
+	public String getImageFilePath() {
+		return imageFilePath;
+	}
+
+
+	public void setImageFilePath(String imageFilePath) {
+		this.imageFilePath = imageFilePath;
 	}
 
 

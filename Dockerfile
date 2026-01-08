@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine
 EXPOSE 8080
 RUN mkdir config logs
 ENV TZ="Asia/Kuala_Lumpur"

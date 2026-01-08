@@ -22,15 +22,33 @@
       	</encoder>
    	</appender>
    	
-   	<logger name="org.springframework.web.filter.CommonsRequestLoggingFilter">
-    	<level value="DEBUG" />
-	</logger>
-   
    	<root level = "info">
 		<appender-ref ref = "springboot"/>
       	<appender-ref ref = "stdout"/> 
    	</root>
 <!-- end of springboot log -->
+
+
+	<appender name="http-io" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/http-io.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/http-io-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{x-logging-id}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="debug" additivity="false">
+        <appender-ref ref="incoming-request" />
+    </logger-->
+    <logger name="com.autoparts.common.web.logging.RequestLoggingFilter" level="debug" additivity="false">
+        <appender-ref ref="http-io" />
+    </logger>
+    <logger name="com.autoparts.common.web.logging.ResponseLoggingFilter" level="debug" additivity="false">
+        <appender-ref ref="http-io" />
+    </logger>
+
 
 <!-- core logging -->
 	<appender name="core" class="ch.qos.logback.core.rolling.RollingFileAppender">

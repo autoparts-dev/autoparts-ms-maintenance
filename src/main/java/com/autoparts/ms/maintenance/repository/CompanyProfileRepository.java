@@ -48,9 +48,9 @@ public interface CompanyProfileRepository {
 	@NativeQuery(modifying = true, value = """
 			INSERT INTO T_COMPANY 
 				(ID, NAME, BRN, PARTY_CD, CONTACT_NUM, ADDR_LINE_1, ADDR_LINE_2, ADDR_LINE_3, POSTCODE, 
-				MT_STATE_ID, MT_CTRY_ID, DIVISION, STATUS_ID, IS_DEL, CREATED, CREATED_BY)
+				MT_STATE_ID, MT_CTRY_ID, LATITUDE, LONGITUDE, STATUS_ID, IS_DEL, CREATED, CREATED_BY)
 			VALUES (:id, UPPER(:name), UPPER(:businessRegistrationNumber), :partyCode, :contactNumber, :addressLine1, :addressLine2, :addressLine3, 
-				:postcode, :stateId, :countryId, :businessDivision, :statusId, 'N', :created, :createdBy)
+				:postcode, :stateId, :countryId, :latitude, :longitude, :statusId, 'N', :created, :createdBy)
 			""")
 	public int create(
 			@BindVariable String id,
@@ -64,8 +64,9 @@ public interface CompanyProfileRepository {
 			@BindVariable String postcode,
 			@BindVariable String stateId,
 			@BindVariable String countryId,
-			@BindVariable String businessDivision,
 			@BindVariable String statusId,
+			@BindVariable double latitude,
+			@BindVariable double longitude,
 			@BindVariable Date created,
 			@BindVariable String createdBy);
 	
@@ -96,6 +97,22 @@ public interface CompanyProfileRepository {
 			@BindVariable String countryId,
 			@BindVariable Date updated,
 			@BindVariable String updatedBy);
+	
+	@Transactional
+	@NativeQuery(modifying = true, value = """
+			UPDATE T_COMPANY SET 
+				UPDATED = :updated,
+				UPDATED_BY = :updatedBy,
+				LATITUDE = :latitude,
+				LONGITUDE = :longitude
+			WHERE ID = :id
+			""")
+	public int updateGeocoding(
+			@BindVariable String id, 
+			@BindVariable Double latitude, 
+			@BindVariable Double longitude,
+			@BindVariable String updatedBy,
+			@BindVariable Date updated);
 	
 
 }

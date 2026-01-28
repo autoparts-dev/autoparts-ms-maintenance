@@ -29,7 +29,6 @@ public class CompanyProfileListVO extends PageObject implements Serializable {
 	private String name;
 	
 	@Column(name = "BRN")
-//	@BindVariable(name = "brn")
 	private String businessRegistrationNumber;
 	
 	@Column(name = "STATUS_ID")

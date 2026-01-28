@@ -41,7 +41,7 @@ public class CompanyProfileUpdateVO implements Serializable {
 
 	private String stateId;
 
-	private String countryId;
+	private String countryId;	//MY
 	
 	/**
 	 * 

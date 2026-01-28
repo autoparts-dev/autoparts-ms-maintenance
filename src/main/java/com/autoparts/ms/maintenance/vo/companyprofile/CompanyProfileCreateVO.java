@@ -10,7 +10,6 @@ import javax.validation.constraints.NotEmpty;
 import com.autoparts.core.validator.json.JsonDeserializeValidator;
 import com.autoparts.core.validator.json.annotation.Mandatory;
 import com.autoparts.core.validator.json.annotation.Regexp;
-import com.autoparts.ms.maintenance.validator.BusinessDivisionConstraint;
 import com.autoparts.ms.maintenance.validator.PartyCodeConstraint;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -57,9 +56,9 @@ public class CompanyProfileCreateVO implements Serializable {
 	@NotEmpty
 	private String partyCode;
 	
-	@Mandatory
-	@BusinessDivisionConstraint
-	private String businessDivision;
+	private double latitude;
+	private double longitude;
+	
 	
 	/**
 	 * 
@@ -165,15 +164,21 @@ public class CompanyProfileCreateVO implements Serializable {
 		this.partyCode = partyCode;
 	}
 
-	public String getBusinessDivision() {
-		return businessDivision;
+	public double getLatitude() {
+		return latitude;
 	}
 
-	public void setBusinessDivision(String businessDivision) {
-		this.businessDivision = businessDivision;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
 
+	public double getLongitude() {
+		return longitude;
+	}
 
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
 
 
 }

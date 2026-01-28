@@ -9,11 +9,16 @@ package com.autoparts.ms.maintenance.constants;
  */
 public enum PartyCode {
 
-	
-    WORKSHOP("Workshop"),
-    SUPPLIER("Supplier")
+    TYRE_WORKSHOP("TYRE_WORKSHOP"),
+    REPAIR_WORKSHOP("REPAIR_WORKSHOP"),
+    TYRE_SUPPLIER("TYRE_SUPPLIER"),
+    PARTS_SUPPLIER("PARTS_SUPPLIER"),
+    
+//    CAR_PARTS("PT"),
+//    CONSUMABLE_PARTS("CP"),
+//    HEAVY_PARTS("HP")
     ;
-
+    
 	/**
 	 * 
 	 */
@@ -27,8 +32,5 @@ public enum PartyCode {
 	public String getValue() {
 		return this.value;
 	}
-	
-//	public static final String WORKSHOP = "Workshop";
-//	public static final String SELLER = "Seller";
 
 }
